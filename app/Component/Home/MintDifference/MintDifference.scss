@@ -1,0 +1,68 @@
+.mint-difference-container {
+  padding: 120px 0px;
+  .heading-h2 {
+    max-width: 520px;
+    width: 100%;
+  }
+  text-align: center;
+
+  gap: 64px;
+  @media (max-width: 767px) {
+    padding: 80px 16px;
+  }
+}
+.difference-card {
+  display: flex;
+  isolation: isolate;
+  flex-direction: column;
+  align-items: flex-start;
+  border-radius: 20px;
+  border: 1px solid #042b22;
+  background: linear-gradient(180deg, #011611 0%, rgba(1, 22, 17, 0) 100%);
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  padding: 24px;
+  height: 380px;
+}
+.difference-card-glow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.first-graphics {
+  position: absolute;
+  overflow: hidden;
+  top: -40px;
+  right: -40px;
+}
+.second-graphics {
+  position: absolute;
+  overflow: hidden;
+  bottom: -200px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.difference-content {
+  max-width: 75%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  .heading-h6 {
+    text-align: left;
+  }
+  .subtitle {
+    text-align: left;
+  }
+}
+.card-image-layer {
+  z-index: 1;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  img {
+    object-fit: contain;
+  }
+}

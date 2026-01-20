@@ -3,6 +3,7 @@
 import GlowingStarCorporateOne from "../../Assets/GlowingStarCorporateOne";
 import GlowingStarCorporateThree from "../../Assets/GlowingStarCorporateThree";
 import GlowingStarCorporateTwo from "../../Assets/GlowingStarCorporateTwo";
+import PricingPlan from "../../Assets/PricingPlan";
 import TickMarked from "../../Assets/TickMarked";
 import "./CorporatePackage.scss";
 
@@ -49,6 +50,9 @@ const packages: CorporatePackageData[] = [
 export default function CorporatePackage() {
   return (
     <div className="corporate-package-container container">
+      <div className="title-for-focus-package">
+        <p className="heading-h6">ENTERPRISE & CORPORATE</p>
+      </div>
       <div className="row g-4">
         {packages.map((pkg, index) => {
           const Glow = pkg.GlowComponent;
