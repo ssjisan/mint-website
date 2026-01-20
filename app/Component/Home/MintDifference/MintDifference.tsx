@@ -161,7 +161,6 @@ export default function MintDifference() {
         </div>
         <div className="col-12 col-sm-12 col-md-5 col-lg-5">
           <ExperienceCard>
-            {/* Absolute image layer */}
             <div className="card-image-layer">
               <Image
                 src="/worldClassCore.png"
@@ -172,15 +171,16 @@ export default function MintDifference() {
             </div>
 
             {/* Graphics */}
-            <div className="thrid-graphics">
-              <LightRayTypeFive />
+            <div className="second-graphics">
+              <LightRayTypeSix />
             </div>
 
             {/* Content */}
             <div className="difference-content">
-              <h6 className="heading-h6">World-Class Core</h6>
+              <h6 className="heading-h6">True Exclusivity</h6>
               <p className="subtitle">
-                Hosted in the same elite data center as Starlink in Bangladesh.
+                Active only in Dhaka’s premier neighborhoods to ensure undivided
+                network quality.
               </p>
             </div>
           </ExperienceCard>
@@ -189,7 +189,7 @@ export default function MintDifference() {
           <ExperienceCard>
             <div className="card-image-layer">
               <Image
-                src="/heritageOfTrust.png"
+                src="/radicalSimplicity.png"
                 alt=""
                 width={280}
                 height={280}
@@ -202,9 +202,9 @@ export default function MintDifference() {
 
             {/* Content */}
             <div className="difference-content">
-              <h6 className="heading-h6">Heritage of Trust</h6>
+              <h6 className="heading-h6">Radical Simplicity</h6>
               <p className="subtitle">
-                Built on 25 years of established industry experience.
+                One powerful residential package. Just 100 Mbps. No confusion.
               </p>
             </div>
           </ExperienceCard>

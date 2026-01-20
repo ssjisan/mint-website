@@ -1,0 +1,82 @@
+.final-ctg-container {
+  padding: 120px 0px;
+}
+
+.final-cta-body {
+  position: relative; // REQUIRED for absolute children
+  padding: 60px 148px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  overflow: hidden;
+}
+
+/* ================= DECORATIVE LAYERS ================= */
+
+.cta-gradient {
+  position: absolute;
+  top: -120px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+  pointer-events: none;
+
+  svg {
+    width: 720px;
+    height: auto;
+  }
+}
+
+.cta-grid {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  z-index: 2;
+  pointer-events: none;
+
+  svg {
+    width: 100%;
+    max-width: 900px;
+    opacity: 0.35;
+  }
+}
+
+/* ================= CONTENT ================= */
+
+.final-cta-content,
+.button,
+.final-cta-contact-deck {
+  position: relative;
+  z-index: 3;
+}
+
+/* ================= CONTACT ================= */
+
+.final-cta-contact-deck {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 60%;
+  padding-top: 24px;
+}
+.final-cta-contact-email {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+}
+.final-cta-icon-body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+}

@@ -1,4 +1,6 @@
 import CorporatePackage from "./Component/Home/CorporatePackage/CorporatePackage";
+import FinalCta from "./Component/Home/FinalCta/FinalCta";
+import Footer from "./Component/Home/Footer/Footer";
 import HeroSection from "./Component/Home/HeroSection/HeroSection";
 import MintDifference from "./Component/Home/MintDifference/MintDifference";
 import MintExperience from "./Component/Home/MintExperience/MintExperience";
@@ -14,6 +16,8 @@ export default function Home() {
       <FoucsPackage />
       <CorporatePackage />
       <MintDifference />
+      <FinalCta />
+      <Footer />
     </div>
   );
 }

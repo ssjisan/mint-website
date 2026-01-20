@@ -3,7 +3,6 @@
 import GlowingStarCorporateOne from "../../Assets/GlowingStarCorporateOne";
 import GlowingStarCorporateThree from "../../Assets/GlowingStarCorporateThree";
 import GlowingStarCorporateTwo from "../../Assets/GlowingStarCorporateTwo";
-import PricingPlan from "../../Assets/PricingPlan";
 import TickMarked from "../../Assets/TickMarked";
 import "./CorporatePackage.scss";
 

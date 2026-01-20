@@ -1,12 +1,12 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import type { Metadata } from "next";
-import { Libre_Baskerville, Google_Sans_Flex } from "next/font/google";
+import { Ubuntu, Google_Sans_Flex } from "next/font/google";
 import "./globals.scss";
 import Script from "next/script";
 
-const libreBaskerville = Libre_Baskerville({
+const libreBaskerville = Ubuntu({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["300", "400", "500", "700"],
   variable: "--font-libreBaskerville",
   display: "swap",
 });
