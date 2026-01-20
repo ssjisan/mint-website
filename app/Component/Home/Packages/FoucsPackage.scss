@@ -2,7 +2,10 @@
   padding: 120px 0 620px;
   position: relative;
   @media (max-width: 767px) {
-    padding: 80px 16px 300px;
+    padding: 80px 24px 300px;
+  }
+  @media (max-width: 575px) {
+    padding: 80px 24px 576px;
   }
 }
 .title-for-focus-package {
@@ -15,6 +18,9 @@
   top: 280px;
   left: 50%;
   transform: translateX(-50%);
+  @media (max-width: 767px) {
+    top: 232px;
+  }
 }
 .focus-package-card {
   position: relative;
