@@ -1,0 +1,17 @@
+.navbar-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  margin-top: 32px;
+  width: 100%;
+  padding: 0px 110px;
+  z-index: 111111111111;
+  @media (max-width: 767px) {
+    padding: 0px 40px;
+  }
+  @media (max-width: 575px) {
+    padding: 0px 24px;
+  }
+}

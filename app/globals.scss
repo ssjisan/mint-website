@@ -1,0 +1,101 @@
+:root {
+  --background: #010101;
+  --foreground: #ffffff;
+
+  // --------------------
+  // Primary colors shade
+  // --------------------
+
+  --primary-100: #eefffb;
+  --primary-300: #61dbbd;
+  --primary-500: #2fbf9b;
+  --primary-700: #19a784;
+  --primary-900: #19a784;
+}
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: var(--font-google-sans), system-ui, sans-serif;
+}
+* {
+  padding: 0;
+  margin: 0;
+}
+
+// Button Global Style
+
+.button {
+  display: flex;
+  padding: 8px 16px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 12px;
+  height: fit-content;
+}
+.primary-fill-button {
+  border: 1px solid #2fbf9b;
+  background: #2fbf9b;
+  box-shadow:
+    0 4px 30px 0 rgba(47, 191, 155, 0.6),
+    0 0 0 4px rgba(47, 191, 155, 0.1);
+}
+.primary-fill-button-corporate-one {
+  border: 1px solid #4a90e2;
+  background: #4a90e2;
+  box-shadow:
+    0 4px 30px 0 rgba(74, 144, 226, 0.6),
+    0 0 0 4px rgba(74, 144, 226, 0.1);
+}
+.primary-fill-button-corporate-two {
+  border: 1px solid #8e44ad;
+  background: #8e44ad;
+  box-shadow:
+    0 4px 30px 0 rgba(142, 68, 173, 0.6),
+    0 0 0 4px rgba(142, 68, 173, 0.1);
+}
+.primary-fill-button-corporate-three {
+  border: 1px solid #bf2f2f;
+  background: #bf2f2f;
+  box-shadow:
+    0 4px 30px 0 rgba(191, 47, 47, 0.6),
+    0 0 0 4px rgba(191, 47, 47, 0.1);
+}
+.heading-h2 {
+  font-size: 64px;
+  font-weight: 700;
+  font-family: var(--font-libreBaskerville), sans-serif;
+}
+.heading-h6 {
+  color: #fff;
+  text-align: center;
+  font-size: 24px;
+  font-weight: 800;
+  line-height: 150%;
+  font-family: var(--font-libreBaskerville), sans-serif;
+}
+.body-one {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 150%;
+  font-family: var(--font-body), sans-serif;
+}
+.subtitle {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 150%;
+  font-family: var(--font-body), sans-serif;
+}
+.body {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 150%;
+  font-family: var(--font-body), sans-serif;
+}
