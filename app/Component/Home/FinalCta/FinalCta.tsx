@@ -74,7 +74,7 @@ export default function FinalCta() {
       variants={containerVariants}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, margin: "-120px" }}
+      viewport={{ once: false, margin: "-120px" }}
     >
       <CtaCard>
         {/* Gradient */}

@@ -1,5 +1,6 @@
 "use client";
 
+import ReactParallaxTilt from "react-parallax-tilt";
 import GlowingStarCorporateOne from "../../Assets/GlowingStarCorporateOne";
 import GlowingStarCorporateThree from "../../Assets/GlowingStarCorporateThree";
 import GlowingStarCorporateTwo from "../../Assets/GlowingStarCorporateTwo";
@@ -49,42 +50,55 @@ const packages: CorporatePackageData[] = [
 export default function CorporatePackage() {
   return (
     <div className="corporate-package-container container">
-      <div className="title-for-focus-package">
-        <p className="heading-h6">ENTERPRISE & CORPORATE</p>
+      <div className="title-for-corporate-package">
+        <p className="heading-h6">ENTERPRISE</p>
       </div>
       <div className="row g-4">
         {packages.map((pkg, index) => {
           const Glow = pkg.GlowComponent;
           return (
             <div className="col-12 col-sm-12 col-md-6 col-lg-4" key={index}>
-              <div className="corporate-package-card">
-                <div className="glow-wrapper-two">
-                  <Glow />
-                </div>
-                <div className="package-name-volume">
-                  {" "}
-                  <h4 className="body">{pkg.title}</h4>{" "}
-                  <p className="body-one">{pkg.price}</p>{" "}
-                </div>
-                <h2 className="heading-h4">{pkg.speed}</h2>{" "}
-                <button className={`button ${pkg.buttonClass}`}>
-                  {" "}
-                  {pkg.buttonText}{" "}
-                </button>{" "}
-                <div className="package-points-deck">
-                  {" "}
-                  {pkg.points.map((point, i) => (
-                    <div className="package-point" key={i}>
-                      {" "}
-                      <div className="package-point-bullet">
+              <ReactParallaxTilt
+                tiltMaxAngleX={8} // max tilt on X-axis
+                tiltMaxAngleY={8} // max tilt on Y-axis
+                perspective={500} // distance for 3D perspective
+                glareEnable={true} // optional: adds dynamic glare
+                glareMaxOpacity={0.2}
+                glareColor="#fff"
+                glarePosition="all"
+                transitionSpeed={400}
+              >
+                <div
+                  className={`corporate-package-card ${index === 1 && "famous-package"}`}
+                >
+                  <div className="glow-wrapper-two">
+                    <Glow />
+                  </div>
+                  <div className="package-name-volume">
+                    {" "}
+                    <h4 className="body">{pkg.title}</h4>{" "}
+                    <p className="body-one">{pkg.price}</p>{" "}
+                  </div>
+                  <h2 className="heading-h4">{pkg.speed}</h2>{" "}
+                  <button className={`button ${pkg.buttonClass}`}>
+                    {" "}
+                    {pkg.buttonText}{" "}
+                  </button>{" "}
+                  <div className="package-points-deck">
+                    {" "}
+                    {pkg.points.map((point, i) => (
+                      <div className="package-point" key={i}>
                         {" "}
-                        <TickMarked />{" "}
-                      </div>{" "}
-                      <p className="subtitle">{point}</p>{" "}
-                    </div>
-                  ))}{" "}
+                        <div className="package-point-bullet">
+                          {" "}
+                          <TickMarked />{" "}
+                        </div>{" "}
+                        <p className="subtitle">{point}</p>{" "}
+                      </div>
+                    ))}{" "}
+                  </div>
                 </div>
-              </div>
+              </ReactParallaxTilt>
             </div>
           );
         })}

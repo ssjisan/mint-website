@@ -14,6 +14,7 @@
     "next": "16.1.1",
     "react": "19.2.3",
     "react-dom": "19.2.3",
+    "react-parallax-tilt": "^1.7.315",
     "sass": "^1.97.2"
   },
   "devDependencies": {

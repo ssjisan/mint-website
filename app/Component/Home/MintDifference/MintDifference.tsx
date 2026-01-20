@@ -69,7 +69,7 @@ function ExperienceCard({ children }: { children: React.ReactNode }) {
       onMouseMove={handleMouseMove}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, margin: "-80px" }}
+      viewport={{ once: false, margin: "-80px" }}
     >
       {/* Hover Glow */}
       <motion.div
@@ -99,7 +99,7 @@ export default function MintDifference() {
       variants={containerVariants}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, margin: "-120px" }}
+      viewport={{ once: false, margin: "-120px" }}
     >
       {/* TITLE */}
       <motion.h2 className="heading-h2" variants={titleVariants}>
