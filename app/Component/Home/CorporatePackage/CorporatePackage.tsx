@@ -64,7 +64,7 @@ export default function CorporatePackage() {
                 perspective={500} // distance for 3D perspective
                 glareEnable={true} // optional: adds dynamic glare
                 glareMaxOpacity={0.2}
-                glareColor="#fff"
+                glareColor="#ffffff00"
                 glarePosition="all"
                 transitionSpeed={400}
               >
