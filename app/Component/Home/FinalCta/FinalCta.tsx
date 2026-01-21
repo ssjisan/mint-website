@@ -89,7 +89,7 @@ export default function FinalCta() {
 
         {/* Content */}
         <div className="final-cta-content">
-          <h2 className="heading-h2">
+          <h2 className="heading-h3">
             More than just speed. Mint is a lifestyle.
           </h2>
           <p className="subtitle">

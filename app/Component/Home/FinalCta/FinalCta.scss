@@ -3,6 +3,10 @@
   @media (max-width: 767px) {
     padding: 60px 16px;
   }
+  .button {
+    max-width: 280px;
+    width: 100%;
+  }
 }
 
 .final-cta-body {
@@ -18,6 +22,9 @@
   border-radius: 16px;
   border: 1px solid rgba(255, 255, 255, 0.2);
   overflow: hidden;
+  @media (max-width: 767px) {
+    padding: 40px 16px;
+  }
 }
 
 /* ================= DECORATIVE LAYERS ================= */
@@ -68,6 +75,10 @@
   align-items: center;
   width: 60%;
   padding-top: 24px;
+  @media (max-width: 767px) {
+    flex-direction: column;
+    gap: 24px;
+  }
 }
 .final-cta-contact-email {
   display: flex;

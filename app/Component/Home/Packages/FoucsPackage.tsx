@@ -4,6 +4,8 @@ import GlowingStar from "../../Assets/GlowingStar";
 import PricingPlan from "../../Assets/PricingPlan";
 import TickMarked from "../../Assets/TickMarked";
 import "./FoucsPackage.scss";
+import Wifi from "../../Assets/Wifi";
+import Image from "next/image";
 
 export default function FoucsPackage() {
   const packagePoints = [
@@ -15,15 +17,20 @@ export default function FoucsPackage() {
   return (
     <div className="foucs-package-container container">
       <div className="title-for-focus-package">
-        <p className="heading-h6">RESIDENTIAL</p>
+        <div className="title-body">
+          <div className="icon-body">
+            <Image src="/wifi.png" alt="wifi" fill />
+          </div>
+          <p className="heading-h6">RESIDENTIAL</p>
+        </div>
         <PricingPlan />
       </div>
       <div className="focus-package-card-container">
         <ReactParallaxTilt
-          tiltMaxAngleX={8} // max tilt on X-axis
-          tiltMaxAngleY={8} // max tilt on Y-axis
-          perspective={500} // distance for 3D perspective
-          glareEnable={true} // optional: adds dynamic glare
+          tiltMaxAngleX={8}
+          tiltMaxAngleY={8}
+          perspective={500}
+          glareEnable={true}
           glareMaxOpacity={0.2}
           glareColor="#ffffff00"
           glarePosition="all"

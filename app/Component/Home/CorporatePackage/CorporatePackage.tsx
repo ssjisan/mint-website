@@ -6,6 +6,7 @@ import GlowingStarCorporateThree from "../../Assets/GlowingStarCorporateThree";
 import GlowingStarCorporateTwo from "../../Assets/GlowingStarCorporateTwo";
 import TickMarked from "../../Assets/TickMarked";
 import "./CorporatePackage.scss";
+import Image from "next/image";
 
 interface CorporatePackageData {
   title: string;
@@ -51,7 +52,12 @@ export default function CorporatePackage() {
   return (
     <div className="corporate-package-container container">
       <div className="title-for-corporate-package">
-        <p className="heading-h6">ENTERPRISE</p>
+        <div className="title-body">
+          <div className="icon-body">
+            <Image src="/flash.png" alt="wifi" fill />
+          </div>
+          <p className="heading-h6">Enterprise</p>
+        </div>
       </div>
       <div className="row g-4">
         {packages.map((pkg, index) => {

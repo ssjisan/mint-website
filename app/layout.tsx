@@ -1,20 +1,13 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import type { Metadata } from "next";
-import { Ubuntu, Google_Sans_Flex } from "next/font/google";
+import { Barlow } from "next/font/google";
 import "./globals.scss";
 import Script from "next/script";
 
-const libreBaskerville = Ubuntu({
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "700"],
-  variable: "--font-libreBaskerville",
-  display: "swap",
-});
-
-const googleSansFlex = Google_Sans_Flex({
+const barlow = Barlow({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
-  variable: "--font-google-sans",
+  variable: "--font-barlow",
   display: "swap",
 });
 
@@ -51,11 +44,7 @@ export default function RootLayout({
         />
       </head>
 
-      <body
-        className={`${libreBaskerville.variable} ${googleSansFlex.variable}`}
-      >
-        {children}
-      </body>
+      <body className={` ${barlow.variable}`}>{children}</body>
     </html>
   );
 }

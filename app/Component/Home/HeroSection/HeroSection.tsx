@@ -68,7 +68,7 @@ export default function HeroSection() {
             <span className="extra-style-for-h2">25 years</span> of trust.
           </motion.h2>
 
-          <motion.p className="body-one" variants={item}>
+          <motion.p className="body-one hero-subtitle" variants={item}>
             Experience premium speed in your exclusive neighborhood (Gulshan,
             Banani, Baridhara, Wari)
           </motion.p>

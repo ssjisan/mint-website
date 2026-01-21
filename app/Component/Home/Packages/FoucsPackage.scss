@@ -2,24 +2,53 @@
   padding: 120px 0 500px;
   position: relative;
   @media (max-width: 767px) {
-    padding: 80px 24px 300px;
+    padding: 80px 24px 560px;
   }
   @media (max-width: 575px) {
-    padding: 80px 24px 576px;
+    padding: 80px 16px 500px;
+  }
+}
+.title-body {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  padding-bottom: 24px;
+}
+.icon-body {
+  width: 32px;
+  height: 32px;
+  position: relative;
+  img {
+    object-fit: contain;
   }
 }
 .title-for-focus-package {
   display: flex;
   flex-direction: column;
   gap: 24px;
+  @media (max-width: 575px) {
+    gap: 8px;
+  }
 }
 .focus-package-card-container {
   position: absolute;
   top: 280px;
   left: 50%;
   transform: translateX(-50%);
+  @media (max-width: 991px) {
+    top: 248px;
+  }
   @media (max-width: 767px) {
-    top: 232px;
+    top: 190px;
+  }
+  @media (max-width: 575px) {
+    top: 170px;
+  }
+  @media (max-width: 450px) {
+    width: 90%;
+    top: 164px;
   }
 }
 .focus-package-card {
@@ -37,6 +66,10 @@
   display: flex;
   flex-direction: column;
   gap: 32px;
+  @media (max-width: 575px) {
+    width: 100%;
+    padding: 20px;
+  }
 }
 .glow-wrapper {
   position: absolute;
@@ -68,7 +101,7 @@
 .package-points-deck {
   display: flex;
   flex-direction: column;
-  gap: 0px;
+  gap: 16px;
 }
 .package-point {
   display: flex;
