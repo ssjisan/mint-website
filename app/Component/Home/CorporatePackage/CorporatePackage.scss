@@ -120,6 +120,9 @@
 
 .famous-package {
   transform: scale(1.12);
+  @media (max-width: 575px) {
+    transform: scale(1);
+  }
 }
 
 /* ================= GLOW STAR ================= */
