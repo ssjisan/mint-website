@@ -10,8 +10,7 @@
   max-width: 800px;
   width: 100%;
   margin: auto;
-  padding-top: 15%;
-
+  padding-top: clamp(240px, 36vh, 440px);
   display: flex;
   flex-direction: column;
   gap: 40px;

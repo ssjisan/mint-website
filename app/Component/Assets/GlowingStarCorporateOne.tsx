@@ -25,8 +25,8 @@ export default function GlowingStarCorporateOne() {
           cy="235"
           r="48"
           stroke="white"
-          stroke-opacity="0.32"
-          stroke-width="4"
+          strokeOpacity="0.32"
+          strokeWidth="4"
         />
       </g>
       <g filter="url(#filter3_f_6382_260)">
@@ -35,8 +35,8 @@ export default function GlowingStarCorporateOne() {
           cy="230"
           r="39"
           stroke="white"
-          stroke-opacity="0.32"
-          stroke-width="4"
+          strokeOpacity="0.32"
+          strokeWidth="4"
         />
       </g>
       <g filter="url(#filter4_f_6382_260)">
@@ -45,8 +45,8 @@ export default function GlowingStarCorporateOne() {
           cy="230"
           r="41"
           stroke="white"
-          stroke-opacity="0.32"
-          stroke-width="4"
+          strokeOpacity="0.32"
+          strokeWidth="4"
         />
       </g>
       <g opacity="0.8">
@@ -110,9 +110,9 @@ export default function GlowingStarCorporateOne() {
           width="534"
           height="455"
           filterUnits="userSpaceOnUse"
-          color-interpolation-filters="sRGB"
+          colorInterpolationFilters="sRGB"
         >
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feBlend
             mode="normal"
             in="SourceGraphic"
@@ -131,9 +131,9 @@ export default function GlowingStarCorporateOne() {
           width="434"
           height="355"
           filterUnits="userSpaceOnUse"
-          color-interpolation-filters="sRGB"
+          colorInterpolationFilters="sRGB"
         >
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feBlend
             mode="normal"
             in="SourceGraphic"
@@ -152,9 +152,9 @@ export default function GlowingStarCorporateOne() {
           width="128"
           height="128"
           filterUnits="userSpaceOnUse"
-          color-interpolation-filters="sRGB"
+          colorInterpolationFilters="sRGB"
         >
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feBlend
             mode="normal"
             in="SourceGraphic"
@@ -173,9 +173,9 @@ export default function GlowingStarCorporateOne() {
           width="110"
           height="110"
           filterUnits="userSpaceOnUse"
-          color-interpolation-filters="sRGB"
+          colorInterpolationFilters="sRGB"
         >
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feBlend
             mode="normal"
             in="SourceGraphic"
@@ -194,9 +194,9 @@ export default function GlowingStarCorporateOne() {
           width="114"
           height="114"
           filterUnits="userSpaceOnUse"
-          color-interpolation-filters="sRGB"
+          colorInterpolationFilters="sRGB"
         >
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feBlend
             mode="normal"
             in="SourceGraphic"
@@ -215,9 +215,9 @@ export default function GlowingStarCorporateOne() {
           width="20.8819"
           height="20.308"
           filterUnits="userSpaceOnUse"
-          color-interpolation-filters="sRGB"
+          colorInterpolationFilters="sRGB"
         >
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feColorMatrix
             in="SourceAlpha"
             type="matrix"
@@ -250,9 +250,9 @@ export default function GlowingStarCorporateOne() {
           width="19.5289"
           height="19.0411"
           filterUnits="userSpaceOnUse"
-          color-interpolation-filters="sRGB"
+          colorInterpolationFilters="sRGB"
         >
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feColorMatrix
             in="SourceAlpha"
             type="matrix"
@@ -285,9 +285,9 @@ export default function GlowingStarCorporateOne() {
           width="12.6778"
           height="12.4373"
           filterUnits="userSpaceOnUse"
-          color-interpolation-filters="sRGB"
+          colorInterpolationFilters="sRGB"
         >
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feColorMatrix
             in="SourceAlpha"
             type="matrix"
@@ -320,9 +320,9 @@ export default function GlowingStarCorporateOne() {
           width="10.8159"
           height="10.8159"
           filterUnits="userSpaceOnUse"
-          color-interpolation-filters="sRGB"
+          colorInterpolationFilters="sRGB"
         >
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feColorMatrix
             in="SourceAlpha"
             type="matrix"
@@ -355,9 +355,9 @@ export default function GlowingStarCorporateOne() {
           width="9.85744"
           height="9.85744"
           filterUnits="userSpaceOnUse"
-          color-interpolation-filters="sRGB"
+          colorInterpolationFilters="sRGB"
         >
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feColorMatrix
             in="SourceAlpha"
             type="matrix"
@@ -390,9 +390,9 @@ export default function GlowingStarCorporateOne() {
           width="9.85744"
           height="9.85744"
           filterUnits="userSpaceOnUse"
-          color-interpolation-filters="sRGB"
+          colorInterpolationFilters="sRGB"
         >
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feColorMatrix
             in="SourceAlpha"
             type="matrix"
@@ -425,9 +425,9 @@ export default function GlowingStarCorporateOne() {
           width="9.85744"
           height="9.85744"
           filterUnits="userSpaceOnUse"
-          color-interpolation-filters="sRGB"
+          colorInterpolationFilters="sRGB"
         >
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feColorMatrix
             in="SourceAlpha"
             type="matrix"
@@ -460,9 +460,9 @@ export default function GlowingStarCorporateOne() {
           width="9.85744"
           height="9.85744"
           filterUnits="userSpaceOnUse"
-          color-interpolation-filters="sRGB"
+          colorInterpolationFilters="sRGB"
         >
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feColorMatrix
             in="SourceAlpha"
             type="matrix"
@@ -495,9 +495,9 @@ export default function GlowingStarCorporateOne() {
           width="9.85744"
           height="9.85744"
           filterUnits="userSpaceOnUse"
-          color-interpolation-filters="sRGB"
+          colorInterpolationFilters="sRGB"
         >
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feColorMatrix
             in="SourceAlpha"
             type="matrix"
@@ -530,9 +530,9 @@ export default function GlowingStarCorporateOne() {
           width="10.8159"
           height="10.8159"
           filterUnits="userSpaceOnUse"
-          color-interpolation-filters="sRGB"
+          colorInterpolationFilters="sRGB"
         >
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feColorMatrix
             in="SourceAlpha"
             type="matrix"
@@ -565,9 +565,9 @@ export default function GlowingStarCorporateOne() {
           width="11.7742"
           height="11.7742"
           filterUnits="userSpaceOnUse"
-          color-interpolation-filters="sRGB"
+          colorInterpolationFilters="sRGB"
         >
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feColorMatrix
             in="SourceAlpha"
             type="matrix"
@@ -600,9 +600,9 @@ export default function GlowingStarCorporateOne() {
           width="11.7742"
           height="11.7742"
           filterUnits="userSpaceOnUse"
-          color-interpolation-filters="sRGB"
+          colorInterpolationFilters="sRGB"
         >
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feColorMatrix
             in="SourceAlpha"
             type="matrix"
@@ -635,9 +635,9 @@ export default function GlowingStarCorporateOne() {
           width="13.6909"
           height="13.6909"
           filterUnits="userSpaceOnUse"
-          color-interpolation-filters="sRGB"
+          colorInterpolationFilters="sRGB"
         >
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feColorMatrix
             in="SourceAlpha"
             type="matrix"
@@ -670,9 +670,9 @@ export default function GlowingStarCorporateOne() {
           width="11.252"
           height="11.252"
           filterUnits="userSpaceOnUse"
-          color-interpolation-filters="sRGB"
+          colorInterpolationFilters="sRGB"
         >
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feColorMatrix
             in="SourceAlpha"
             type="matrix"
@@ -706,8 +706,8 @@ export default function GlowingStarCorporateOne() {
           y2="240.5"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#4A90E2" />
-          <stop offset="1" stop-color="#294F7C" />
+          <stop stopColor="#4A90E2" />
+          <stop offset="1" stopColor="#294F7C" />
         </linearGradient>
       </defs>
     </svg>

@@ -23,11 +23,11 @@ export default function CtaGradiant() {
           gradientUnits="userSpaceOnUse"
           gradientTransform="translate(659.5 278.8) scale(659.5 510)"
         >
-          <stop offset="0.0734973" stop-color="white" />
-          <stop offset="0.242278" stop-color="#2FBF9B" />
-          <stop offset="0.36" stop-color="#82EED3" />
-          <stop offset="0.499878" stop-color="#109775" />
-          <stop offset="1" stop-color="#010101" stop-opacity="0" />
+          <stop offset="0.0734973" stopColor="white" />
+          <stop offset="0.242278" stopColor="#2FBF9B" />
+          <stop offset="0.36" stopColor="#82EED3" />
+          <stop offset="0.499878" stopColor="#109775" />
+          <stop offset="1" stopColor="#010101" stopOpacity="0" />
         </radialGradient>
       </defs>
     </svg>

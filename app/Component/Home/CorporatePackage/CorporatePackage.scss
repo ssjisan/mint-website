@@ -1,9 +1,13 @@
+/* ================= CONTAINER ================= */
+
 .corporate-package-container {
-  padding: 120px 0px;
+  padding: 120px 0;
+
   @media (max-width: 767px) {
     padding: 60px 16px;
   }
 }
+
 .title-for-corporate-package {
   display: flex;
   flex-direction: column;
@@ -11,72 +15,172 @@
   padding-bottom: 48px;
 }
 
+/* ================= CARD BASE ================= */
+
 .corporate-package-card {
   margin: auto;
   position: relative;
-  max-width: 440px;
-  width: 100%;
   max-width: 380px;
+  width: 100%;
   padding: 40px;
   border-radius: 32px;
-  border: 2px solid rgba(255, 255, 255, 0.1);
+
   background: rgba(19, 15, 26, 0.18);
-  box-shadow:
-    9.641px 22.248px 48.204px 0 rgba(0, 0, 0, 0.4),
-    -2.966px 9.641px 23.731px 0 rgba(255, 255, 255, 0.03) inset;
+  border: 2px solid rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
+
+  box-shadow:
+    9.6px 22px 48px rgba(0, 0, 0, 0.4),
+    -3px 9px 24px rgba(255, 255, 255, 0.03) inset;
+
   display: flex;
   flex-direction: column;
   gap: 32px;
   overflow: hidden;
+
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease;
 }
 
-.famous-package {
-  transform: scale(1.15);
+/* ================= MOVING GLOW BORDER ================= */
+
+.corporate-package-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 2px;
+
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.85),
+    transparent 100%
+  );
+  background-size: 300% 300%;
+  background-position: 0% 50%;
+
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+
+  opacity: 0;
+  pointer-events: none;
+
+  animation: glow-border-move 6s linear infinite;
+  transition: opacity 0.35s ease;
 }
+
+/* ================= HOVER STATE ================= */
+
+.corporate-package-card:hover {
+  transform: translateY(-8px) scale(1.015);
+  box-shadow:
+    0 30px 70px rgba(0, 0, 0, 0.6),
+    0 0 50px rgba(255, 255, 255, 0.15);
+}
+
+.corporate-package-card:hover::before {
+  opacity: 1;
+}
+
+/* ================= GLOW COLORS ================= */
+
+.corporate-package-card[data-glow="blue"]::before {
+  background-image: linear-gradient(
+    90deg,
+    transparent,
+    rgba(74, 144, 226, 0.9),
+    transparent
+  );
+}
+
+.corporate-package-card[data-glow="purple"]::before {
+  background-image: linear-gradient(
+    90deg,
+    transparent,
+    rgba(142, 68, 173, 0.9),
+    transparent
+  );
+}
+
+.corporate-package-card[data-glow="red"]::before {
+  background-image: linear-gradient(
+    90deg,
+    transparent,
+    rgba(191, 47, 47, 0.9),
+    transparent
+  );
+}
+
+/* ================= FEATURED CARD ================= */
+
+.famous-package {
+  transform: scale(1.12);
+}
+
+/* ================= GLOW STAR ================= */
+
 .glow-wrapper-two {
   position: absolute;
-  top: -248px; // placement above the card
-  left: 50%; // center horizontally if needed
+  top: -248px;
+  left: 50%;
   transform: translateX(-50%);
-  z-index: -1; // place behind all content
+  z-index: -1;
   pointer-events: none;
 }
+
+/* ================= CONTENT ================= */
 
 .corporate-package-content {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 8px;
-  width: 100%;
-  z-index: 1; // below the star
+  z-index: 1;
 }
+
 .package-name-volume {
   display: flex;
   flex-direction: column;
   gap: 8px;
-  .body {
-    color: #fff;
-  }
+
+  .body,
   .body-one {
     color: #fff;
   }
 }
+
 .package-points-deck {
   display: flex;
   flex-direction: column;
-  gap: 0px;
+  gap: 6px;
 }
+
 .package-point {
   display: flex;
-  flex-direction: row;
+  align-items: center;
   gap: 8px;
 }
+
 .package-point-bullet {
   width: 20px;
   height: 20px;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+/* ================= ANIMATION ================= */
+
+@keyframes glow-border-move {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 300% 50%;
+  }
 }

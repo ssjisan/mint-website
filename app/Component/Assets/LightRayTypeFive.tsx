@@ -41,9 +41,9 @@ export default function LightRayTypeFive() {
           width="420.067"
           height="457.966"
           filterUnits="userSpaceOnUse"
-          color-interpolation-filters="sRGB"
+          colorInterpolationFilters="sRGB"
         >
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feBlend
             mode="normal"
             in="SourceGraphic"
@@ -62,9 +62,9 @@ export default function LightRayTypeFive() {
           width="420.067"
           height="457.966"
           filterUnits="userSpaceOnUse"
-          color-interpolation-filters="sRGB"
+          colorInterpolationFilters="sRGB"
         >
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feBlend
             mode="normal"
             in="SourceGraphic"
@@ -83,9 +83,9 @@ export default function LightRayTypeFive() {
           width="277.476"
           height="304.001"
           filterUnits="userSpaceOnUse"
-          color-interpolation-filters="sRGB"
+          colorInterpolationFilters="sRGB"
         >
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feBlend
             mode="normal"
             in="SourceGraphic"
@@ -104,9 +104,9 @@ export default function LightRayTypeFive() {
           width="277.476"
           height="304.001"
           filterUnits="userSpaceOnUse"
-          color-interpolation-filters="sRGB"
+          colorInterpolationFilters="sRGB"
         >
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feBlend
             mode="normal"
             in="SourceGraphic"
@@ -126,9 +126,9 @@ export default function LightRayTypeFive() {
           y2="275.414"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="white" />
-          <stop offset="0.557292" stop-color="#2FBF9B" />
-          <stop offset="1" stop-color="#2FBF9B" stop-opacity="0.3" />
+          <stop stopColor="white" />
+          <stop offset="0.557292" stopColor="#2FBF9B" />
+          <stop offset="1" stopColor="#2FBF9B" stopOpacity="0.3" />
         </linearGradient>
         <linearGradient
           id="paint1_linear_6395_108"
@@ -138,9 +138,9 @@ export default function LightRayTypeFive() {
           y2="275.414"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="white" />
-          <stop offset="0.557292" stop-color="#2FBF9B" />
-          <stop offset="1" stop-color="#2FBF9B" stop-opacity="0.3" />
+          <stop stopColor="white" />
+          <stop offset="0.557292" stopColor="#2FBF9B" />
+          <stop offset="1" stopColor="#2FBF9B" stopOpacity="0.3" />
         </linearGradient>
         <linearGradient
           id="paint2_linear_6395_108"
@@ -150,9 +150,9 @@ export default function LightRayTypeFive() {
           y2="206.339"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="white" />
-          <stop offset="0.557292" stop-color="#2FBF9B" />
-          <stop offset="1" stop-color="#2FBF9B" stop-opacity="0.3" />
+          <stop stopColor="white" />
+          <stop offset="0.557292" stopColor="#2FBF9B" />
+          <stop offset="1" stopColor="#2FBF9B" stopOpacity="0.3" />
         </linearGradient>
         <linearGradient
           id="paint3_linear_6395_108"
@@ -162,9 +162,9 @@ export default function LightRayTypeFive() {
           y2="206.339"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="white" />
-          <stop offset="0.557292" stop-color="#2FBF9B" />
-          <stop offset="1" stop-color="#2FBF9B" stop-opacity="0.3" />
+          <stop stopColor="white" />
+          <stop offset="0.557292" stopColor="#2FBF9B" />
+          <stop offset="1" stopColor="#2FBF9B" stopOpacity="0.3" />
         </linearGradient>
       </defs>
     </svg>
