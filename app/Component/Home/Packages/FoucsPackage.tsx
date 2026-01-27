@@ -6,6 +6,7 @@ import TickMarked from "../../Assets/TickMarked";
 import "./FoucsPackage.scss";
 import Wifi from "../../Assets/Wifi";
 import Image from "next/image";
+import toast from "react-hot-toast";
 
 export default function FoucsPackage() {
   const packagePoints = [
@@ -14,6 +15,10 @@ export default function FoucsPackage() {
     "Priority Support: 24/7 Dedicated Line",
     "Real Public IP included",
   ];
+  const notify = () =>
+    toast("We’ll start taking connection requests from this Friday.", {
+      icon: "📢",
+    });
   return (
     <div className="foucs-package-container container">
       <div className="title-for-focus-package">
@@ -45,7 +50,7 @@ export default function FoucsPackage() {
               <p className="body-one">2,500/month</p>
             </div>
             <h2 className="heading-h2">100Mbps</h2>
-            <button className="button primary-fill-button">
+            <button className="button primary-fill-button" onClick={notify}>
               GET RESIDENTIAL
             </button>
             <div className="package-points-deck">

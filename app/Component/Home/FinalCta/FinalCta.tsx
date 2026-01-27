@@ -7,6 +7,7 @@ import Email from "../../Assets/Email";
 import LightRayTypeSix from "../../Assets/LightRayTypeSix";
 import Phone from "../../Assets/Phone";
 import "./FinalCta.scss";
+import toast from "react-hot-toast";
 
 /* ================= ANIMATION VARIANTS ================= */
 
@@ -68,6 +69,10 @@ function CtaCard({ children }: { children: React.ReactNode }) {
 /* ================= MAIN COMPONENT ================= */
 
 export default function FinalCta() {
+  const notify = () =>
+    toast("We’ll start taking connection requests from this Friday.", {
+      icon: "📢",
+    });
   return (
     <motion.section
       className="final-ctg-container container"
@@ -97,7 +102,9 @@ export default function FinalCta() {
           </p>
         </div>
 
-        <button className="button primary-fill-button">Order Now</button>
+        <button className="button primary-fill-button" onClick={notify}>
+          Order Now
+        </button>
 
         {/* Contact */}
         <div className="final-cta-contact-deck">

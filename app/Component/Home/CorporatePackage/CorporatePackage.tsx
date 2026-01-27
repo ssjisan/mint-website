@@ -7,6 +7,7 @@ import GlowingStarCorporateTwo from "../../Assets/GlowingStarCorporateTwo";
 import TickMarked from "../../Assets/TickMarked";
 import "./CorporatePackage.scss";
 import Image from "next/image";
+import toast from "react-hot-toast";
 
 interface CorporatePackageData {
   title: string;
@@ -49,6 +50,10 @@ const packages: CorporatePackageData[] = [
 ];
 
 export default function CorporatePackage() {
+  const notify = () =>
+    toast("We’ll start taking connection requests from this Friday.", {
+      icon: "📢",
+    });
   return (
     <div className="corporate-package-container container">
       <div className="title-for-corporate-package">
@@ -86,7 +91,10 @@ export default function CorporatePackage() {
                     <p className="body-one">{pkg.price}</p>{" "}
                   </div>
                   <h2 className="heading-h4">{pkg.speed}</h2>{" "}
-                  <button className={`button ${pkg.buttonClass}`}>
+                  <button
+                    className={`button ${pkg.buttonClass}`}
+                    onClick={notify}
+                  >
                     {" "}
                     {pkg.buttonText}{" "}
                   </button>{" "}

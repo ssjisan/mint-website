@@ -3,8 +3,13 @@
 import { motion } from "framer-motion";
 import Logo from "../Assets/Logo";
 import "./Navbar.scss";
+import toast from "react-hot-toast";
 
 export default function Navbar() {
+  const notify = () =>
+    toast("We’ll start taking connection requests from this Friday.", {
+      icon: "📢",
+    });
   return (
     <motion.div
       className="navbar-container"
@@ -16,7 +21,9 @@ export default function Navbar() {
       }}
     >
       <Logo />
-      <button className="button primary-fill-button">Order Now</button>
+      <button className="button primary-fill-button" onClick={notify}>
+        Order Now
+      </button>
     </motion.div>
   );
 }

@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { Barlow } from "next/font/google";
 import "./globals.scss";
 import Script from "next/script";
+import { Toaster } from "react-hot-toast";
 
 const barlow = Barlow({
   subsets: ["latin"],
@@ -44,7 +45,10 @@ export default function RootLayout({
         />
       </head>
 
-      <body className={` ${barlow.variable}`}>{children}</body>
+      <body className={` ${barlow.variable}`}>
+        <Toaster />
+        {children}
+      </body>
     </html>
   );
 }
