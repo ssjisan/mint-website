@@ -1,115 +1,121 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import ReactParallaxTilt from "react-parallax-tilt";
-import GlowingStarCorporateOne from "../../Assets/GlowingStarCorporateOne";
-import GlowingStarCorporateThree from "../../Assets/GlowingStarCorporateThree";
-import GlowingStarCorporateTwo from "../../Assets/GlowingStarCorporateTwo";
-import TickMarked from "../../Assets/TickMarked";
-import "./CorporatePackage.scss";
 import Image from "next/image";
 import toast from "react-hot-toast";
 
-interface CorporatePackageData {
-  title: string;
-  speed: string;
-  price: string;
-  points: string[];
-  buttonText: string;
-  buttonClass: string;
-  GlowComponent: React.FC;
-}
+import TickMarked from "../../Assets/TickMarked";
+import GlowingStarCorporateOne from "../../Assets/GlowingStarCorporateOne";
+import GlowingStarCorporateTwo from "../../Assets/GlowingStarCorporateTwo";
+import GlowingStarCorporateThree from "../../Assets/GlowingStarCorporateThree";
 
-const packages: CorporatePackageData[] = [
+import "./CorporatePackage.scss";
+import { Package } from "@/app/lib/types/package";
+import axios from "../../../lib/axios";
+import ConnectionModal from "../ConnectionModal/ConnectionModal";
+const corporateUI = [
   {
-    title: "Business Starter",
-    speed: "200 Mbps",
-    price: "BDT 20,000 / Month",
-    points: ["SME Dedicated Bandwidth", "SLA Guarantee", "Account Manager"],
-    buttonText: "Choose 200MB",
-    GlowComponent: GlowingStarCorporateOne,
+    Glow: GlowingStarCorporateOne,
     buttonClass: "primary-fill-button-corporate-one",
   },
   {
-    title: "Corporate Pro",
-    speed: "500 Mbps",
-    price: "BDT 40,000 / Month",
-    points: ["Enterprise Grade Speed", "Premium SLA", "Redundant Connectivity"],
-    buttonText: "Choose 500MB",
-    GlowComponent: GlowingStarCorporateTwo,
+    Glow: GlowingStarCorporateTwo,
     buttonClass: "primary-fill-button-corporate-two",
   },
   {
-    title: "Ultimate Core",
-    speed: "1 Gbps",
-    price: "BDT 60,000 / Month",
-    points: ["Data-Center Grade", "Zero Contention Ratio", "24/7 NOC Access"],
-    buttonText: "Choose 1Gbps",
-    GlowComponent: GlowingStarCorporateThree,
+    Glow: GlowingStarCorporateThree,
     buttonClass: "primary-fill-button-corporate-three",
   },
 ];
 
 export default function CorporatePackage() {
-  const notify = () =>
-    toast("We’ll start taking connection requests from this Friday.", {
-      icon: "📢",
+  const [packages, setPackages] = useState<Package[]>([]);
+
+  useEffect(() => {
+    axios.get("/packages/corporate").then((res) => {
+      setPackages(res.data.packages);
     });
+  }, []);
+  const formatSpeed = (speedMbps: number) => {
+    if (speedMbps >= 1024) {
+      // Convert to Gbps
+      const gbps = speedMbps / 1024;
+      return `${gbps % 1 === 0 ? gbps : gbps.toFixed(2)} Gbps`; // Round to 2 decimals if needed
+    }
+    return `${speedMbps} Mbps`;
+  };
+  const [selectedPackage, setSelectedPackage] = useState<Package | null>(null);
+  const [modalOpen, setModalOpen] = useState(false);
+
+  const openModal = (pkg: Package) => {
+    setSelectedPackage(pkg);
+    setModalOpen(true);
+  };
+
   return (
     <div className="corporate-package-container container">
       <div className="title-for-corporate-package">
         <div className="title-body">
           <div className="icon-body">
-            <Image src="/flash.png" alt="wifi" fill />
+            <Image src="/flash.png" alt="enterprise" fill />
           </div>
           <p className="heading-h6">Enterprise</p>
         </div>
       </div>
+
       <div className="row g-4">
         {packages.map((pkg, index) => {
-          const Glow = pkg.GlowComponent;
+          const UI = corporateUI[index % corporateUI.length];
+          const Glow = UI.Glow;
+
           return (
-            <div className="col-12 col-sm-12 col-md-6 col-lg-4" key={index}>
+            <div className="col-12 col-md-6 col-lg-4" key={pkg._id}>
               <ReactParallaxTilt
-                tiltMaxAngleX={8} // max tilt on X-axis
-                tiltMaxAngleY={8} // max tilt on Y-axis
-                perspective={500} // distance for 3D perspective
-                glareEnable={true} // optional: adds dynamic glare
+                tiltMaxAngleX={8}
+                tiltMaxAngleY={8}
+                perspective={500}
+                glareEnable={true}
                 glareMaxOpacity={0.2}
                 glareColor="#ffffff00"
                 glarePosition="all"
                 transitionSpeed={400}
               >
                 <div
-                  className={`corporate-package-card ${index === 1 && "famous-package"}`}
+                  className={`corporate-package-card ${
+                    index === 1 ? "famous-package" : ""
+                  }`}
                 >
                   <div className="glow-wrapper-two">
                     <Glow />
                   </div>
+
                   <div className="package-name-volume">
-                    {" "}
-                    <h4 className="body">{pkg.title}</h4>{" "}
-                    <p className="body-one">{pkg.price}</p>{" "}
+                    <h4 className="body">{pkg.packageName}</h4>
+                    <p className="body-one">
+                      BDT {pkg.price.toLocaleString()} / Month
+                    </p>
                   </div>
-                  <h2 className="heading-h4">{pkg.speed}</h2>{" "}
+
+                  <h2 className="heading-h4">{formatSpeed(pkg.speedMbps)}</h2>
+
                   <button
-                    className={`button ${pkg.buttonClass}`}
-                    onClick={notify}
+                    className={`button ${UI.buttonClass}`}
+                    onClick={() => openModal(pkg)}
                   >
-                    {" "}
-                    {pkg.buttonText}{" "}
-                  </button>{" "}
+                    Choose {formatSpeed(pkg.speedMbps)}
+                  </button>
+
                   <div className="package-points-deck">
-                    {" "}
-                    {pkg.points.map((point, i) => (
-                      <div className="package-point" key={i}>
-                        {" "}
+                    {pkg?.items?.map((point, i) => (
+                      <div className="package-point" key={point.id || i}>
                         <div className="package-point-bullet">
-                          {" "}
-                          <TickMarked />{" "}
-                        </div>{" "}
-                        <p className="subtitle">{point}</p>{" "}
+                          <TickMarked />
+                        </div>
+                        <p className="subtitle">{point.title}</p>{" "}
+                        {/* Use title */}
                       </div>
-                    ))}{" "}
+                    ))}
                   </div>
                 </div>
               </ReactParallaxTilt>
@@ -117,6 +123,12 @@ export default function CorporatePackage() {
           );
         })}
       </div>
+      {modalOpen && (
+        <ConnectionModal
+          selectedPackage={selectedPackage}
+          onClose={() => setModalOpen(false)}
+        />
+      )}
     </div>
   );
 }

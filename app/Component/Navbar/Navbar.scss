@@ -4,10 +4,11 @@
   justify-content: space-between;
   align-items: center;
   position: fixed;
-  margin-top: 32px;
   width: 100%;
   padding: 0px 110px;
-  z-index: 111111111111;
+  z-index: 100;
+  background: rgba(19, 15, 26, 0.18);
+  backdrop-filter: blur(10px);
   @media (max-width: 767px) {
     padding: 0px 40px;
   }

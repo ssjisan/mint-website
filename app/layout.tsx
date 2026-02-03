@@ -4,6 +4,7 @@ import { Barlow } from "next/font/google";
 import "./globals.scss";
 import Script from "next/script";
 import { Toaster } from "react-hot-toast";
+import ChatBot from "./Component/ChatBot";
 
 const barlow = Barlow({
   subsets: ["latin"],
@@ -47,6 +48,7 @@ export default function RootLayout({
 
       <body className={` ${barlow.variable}`}>
         <Toaster />
+        <ChatBot />
         {children}
       </body>
     </html>
