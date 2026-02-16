@@ -1,6 +1,7 @@
 "use client";
 
 import { motion, useMotionValue, useMotionTemplate } from "framer-motion";
+import axios from "../../../lib/axios";
 
 import AbstractGrid from "../../Assets/AbstractGrid";
 import Email from "../../Assets/Email";
@@ -8,6 +9,9 @@ import LightRayTypeSix from "../../Assets/LightRayTypeSix";
 import Phone from "../../Assets/Phone";
 import "./FinalCta.scss";
 import toast from "react-hot-toast";
+import { useState } from "react";
+import { Package } from "@/app/lib/types/package"; // same Package type
+import ConnectionModal from "../ConnectionModal/ConnectionModal";
 
 /* ================= ANIMATION VARIANTS ================= */
 
@@ -69,10 +73,30 @@ function CtaCard({ children }: { children: React.ReactNode }) {
 /* ================= MAIN COMPONENT ================= */
 
 export default function FinalCta() {
-  const notify = () =>
-    toast("We’ll start taking connection requests from this Friday.", {
-      icon: "📢",
-    });
+  const [modalOpen, setModalOpen] = useState(false);
+  const [selectedPackage, setSelectedPackage] = useState<Package | null>(null);
+  const [packages, setPackages] = useState<Package[]>([]);
+
+  // Fetch all packages once (optional)
+  const fetchPackages = async () => {
+    try {
+      const res = await axios.get("/packages");
+      setPackages(res.data.packages);
+      // Optionally select the first package by default
+      if (res.data.packages.length > 0)
+        setSelectedPackage(res.data.packages[0]);
+    } catch (err) {
+      toast.error("Failed to load packages");
+    }
+  };
+  const openModal = () => {
+    if (!packages.length) {
+      fetchPackages().then(() => setModalOpen(true));
+    } else {
+      setModalOpen(true);
+    }
+  };
+
   return (
     <motion.section
       className="final-ctg-container container"
@@ -102,7 +126,7 @@ export default function FinalCta() {
           </p>
         </div>
 
-        <button className="button primary-fill-button" onClick={notify}>
+        <button className="button primary-fill-button" onClick={openModal}>
           Order Now
         </button>
 
@@ -119,10 +143,16 @@ export default function FinalCta() {
             <div className="final-cta-icon-body">
               <Phone />
             </div>
-            <p className="subtitle">+880 1617 55 54 29</p>
+            <p className="subtitle">09666773696</p>
           </div>
         </div>
       </CtaCard>
+      {modalOpen && selectedPackage && (
+        <ConnectionModal
+          selectedPackage={selectedPackage}
+          onClose={() => setModalOpen(false)}
+        />
+      )}
     </motion.section>
   );
 }

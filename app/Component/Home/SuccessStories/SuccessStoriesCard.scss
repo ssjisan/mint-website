@@ -1,0 +1,32 @@
+.success-card {
+  width: 100%;
+  border: 1px solid red;
+  height: 220px;
+  cursor: pointer;
+
+  .success-card-img {
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .success-card-gradient {
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+    z-index: 1;
+  }
+
+  .success-card-content {
+    z-index: 2;
+  }
+
+  .success-card-btn {
+    bottom: 1rem;
+    right: 1rem;
+    opacity: 0;
+    z-index: 2;
+    transition: opacity 0.3s ease;
+  }
+
+  &:hover .success-card-btn {
+    opacity: 1;
+  }
+}

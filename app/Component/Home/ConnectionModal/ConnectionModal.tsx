@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import axios from "../../../lib/axios";
 import toast from "react-hot-toast";
 import "./ConnectionModal.scss";
+import Close from "../../Assets/Close";
 
 interface Package {
   _id: string;
@@ -17,7 +18,15 @@ interface ConnectionModalProps {
   selectedPackage: Package | null;
   onClose: () => void;
 }
-
+interface ConnectionRequestPayload {
+  name: string;
+  phone: string;
+  email: string;
+  address: string;
+  packageId?: string;
+  packageType?: "residential" | "corporate";
+  companyName?: string;
+}
 export default function ConnectionModal({
   selectedPackage,
   onClose,
@@ -30,7 +39,20 @@ export default function ConnectionModal({
   const [captchaA, setCaptchaA] = useState(0);
   const [captchaB, setCaptchaB] = useState(0);
   const [captchaAnswer, setCaptchaAnswer] = useState("");
+  const [packages, setPackages] = useState<Package[]>([]);
+  const [selectedPkg, setSelectedPkg] = useState<Package | null>(
+    selectedPackage,
+  );
+  useEffect(() => {
+    // When the modal is open, prevent background scroll
+    document.body.style.overflow = "hidden";
 
+    return () => {
+      // Restore scroll when modal closes
+      document.body.style.overflow = "";
+    };
+  }, []);
+  // Generate simple captcha
   const generateCaptcha = () => {
     const a = Math.floor(Math.random() * 20) + 1;
     const b = Math.floor(Math.random() * 20) + 1;
@@ -38,31 +60,36 @@ export default function ConnectionModal({
     setCaptchaB(b);
     setCaptchaAnswer("");
   };
+
   useEffect(() => {
     generateCaptcha();
+    // Fetch packages from API
+    axios.get("/packages").then((res) => setPackages(res.data.packages));
   }, []);
 
+  useEffect(() => {
+    setSelectedPkg(selectedPackage);
+  }, [selectedPackage]);
+
   const handleSubmit = async () => {
-    // Validations
     if (!name || !phone || !email || !address) {
       return toast.error("Please fill all required fields.");
     }
-
     if (parseInt(captchaAnswer) !== captchaA + captchaB) {
       return toast.error("Captcha answer is incorrect.");
     }
 
     try {
-      const payload: any = {
+      const payload: ConnectionRequestPayload = {
         name,
         phone,
         email,
         address,
-        packageId: selectedPackage?._id,
-        packageType: selectedPackage?.type,
+        packageId: selectedPkg?._id,
+        packageType: selectedPkg?.type,
       };
 
-      if (selectedPackage?.type === "corporate") {
+      if (selectedPkg?.type === "corporate") {
         if (!companyName)
           return toast.error(
             "Company name is required for corporate packages.",
@@ -76,58 +103,74 @@ export default function ConnectionModal({
         onClose();
       }
     } catch (err: any) {
-      console.error(err);
       toast.error(err.response?.data?.error || "Failed to submit request");
     }
   };
 
-  if (!selectedPackage) return null;
+  if (!selectedPkg) return null;
 
   return (
-    <div className="connection-modal-backdrop">
-      <div className="connection-modal">
+    <div className="connection-drawer-backdrop">
+      <div className="connection-drawer">
         <button className="close-btn" onClick={onClose}>
-          ×
+          <Close />
         </button>
         <h3>Connection Request</h3>
-        <p>Package: {selectedPackage.packageName}</p>
-        <p>Price: BDT {selectedPackage.price.toLocaleString()}</p>
-        <p>
-          Speed:{" "}
-          {selectedPackage.speedMbps >= 1024
-            ? `${selectedPackage.speedMbps / 1024} Gbps`
-            : `${selectedPackage.speedMbps} Mbps`}
-        </p>
 
+        {/* Package Selector */}
         <div className="form-group">
-          <label>Name*</label>
-          <input value={name} onChange={(e) => setName(e.target.value)} />
+          <label>Select Package*</label>
+          <select
+            value={selectedPkg._id}
+            onChange={(e) =>
+              setSelectedPkg(
+                packages.find((p) => p._id === e.target.value) || null,
+              )
+            }
+          >
+            {packages?.map((pkg) => (
+              <option key={pkg._id} value={pkg._id}>
+                {pkg.packageName} - BDT {pkg.price.toLocaleString()}
+              </option>
+            ))}
+          </select>
         </div>
 
-        <div className="form-group">
-          <label>Phone*</label>
-          <input value={phone} onChange={(e) => setPhone(e.target.value)} />
-        </div>
-
-        <div className="form-group">
-          <label>Email*</label>
-          <input value={email} onChange={(e) => setEmail(e.target.value)} />
-        </div>
-
-        <div className="form-group">
-          <label>Address*</label>
-          <input value={address} onChange={(e) => setAddress(e.target.value)} />
-        </div>
-
-        {selectedPackage.type === "corporate" && (
+        {/* Inputs */}
+        <div className="form-grid">
           <div className="form-group">
-            <label>Company Name*</label>
+            <label>Name*</label>
+            <input value={name} onChange={(e) => setName(e.target.value)} />
+          </div>
+
+          <div className="form-group">
+            <label>Phone*</label>
+            <input value={phone} onChange={(e) => setPhone(e.target.value)} />
+          </div>
+
+          <div className="form-group">
+            <label>Email*</label>
+            <input value={email} onChange={(e) => setEmail(e.target.value)} />
+          </div>
+
+          <div className="form-group">
+            <label>Address*</label>
             <input
-              value={companyName}
-              onChange={(e) => setCompanyName(e.target.value)}
+              value={address}
+              onChange={(e) => setAddress(e.target.value)}
             />
           </div>
-        )}
+
+          {selectedPkg.type === "corporate" && (
+            <div className="form-group">
+              <label>Company Name*</label>
+              <input
+                value={companyName}
+                onChange={(e) => setCompanyName(e.target.value)}
+              />
+            </div>
+          )}
+        </div>
 
         {/* CAPTCHA */}
         <div className="form-group">

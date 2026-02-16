@@ -5,6 +5,7 @@ import HeroSection from "./Component/Home/HeroSection/HeroSection";
 import MintDifference from "./Component/Home/MintDifference/MintDifference";
 import MintExperience from "./Component/Home/MintExperience/MintExperience";
 import FoucsPackage from "./Component/Home/Packages/FoucsPackage";
+import SuccessStories from "./Component/Home/SuccessStories/SuccessStories";
 import Navbar from "./Component/Navbar/Navbar";
 
 export default function Home() {
@@ -15,6 +16,7 @@ export default function Home() {
       <MintExperience />
       <FoucsPackage />
       <CorporatePackage />
+      <SuccessStories />
       <MintDifference />
       <FinalCta />
       <Footer />
