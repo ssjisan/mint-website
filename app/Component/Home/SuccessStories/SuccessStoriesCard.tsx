@@ -1,34 +1,37 @@
+import Image from "next/image";
 import "./SuccessStoriesCard.scss";
+import Link from "next/link";
+
 interface Props {
   coverPhoto: string;
   title: string;
   createdAt: string;
+  id: string;
 }
+
 export default function SuccessStoriesCard({
   coverPhoto,
   title,
+  id,
   createdAt,
 }: Props) {
+
+  const date = new Date(createdAt);
+
+  const formattedDate = `${date.getDate().toString().padStart(2, "0")} 
+        ${date.toLocaleString("en-GB", { month: "short" })}, 
+        ${date.getFullYear()}`;
   return (
-    <div className="success-card position-relative overflow-hidden rounded shadow-sm">
-      {/* Background Image */}
-      <img src={coverPhoto} alt={title} className="success-card-img w-100" />
+    <Link className="success-card" href={`/success-stories/${id}`}>
+      <div className="success-storis-cover">
+        <Image src={coverPhoto} alt={title} fill className="cover-img" />
+        <div className="overlay"></div>
 
-      {/* Gradient Overlay */}
-      <div className="success-card-gradient position-absolute top-0 start-0 w-100 h-100"></div>
-
-      {/* Title and Date */}
-      <div className="success-card-content position-absolute bottom-0 start-0 p-3 text-white w-100">
-        <h5 className="success-card-title mb-1">{title}</h5>
-        <p className="success-card-date mb-0">
-          Published at {new Date(createdAt).toLocaleDateString()}
-        </p>
+        <div className="card-content">
+          <h5 className="heading-h5 text-white">{title}</h5>
+          <p className="text-white">Published on {formattedDate}</p>
+        </div>
       </div>
-
-      {/* Read More Button */}
-      <button className="success-card-btn btn btn-light position-absolute">
-        Read More
-      </button>
-    </div>
+    </Link>
   );
 }

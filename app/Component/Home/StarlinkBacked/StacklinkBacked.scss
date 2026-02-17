@@ -1,0 +1,76 @@
+.map-svg-part {
+  padding-top: 40px;
+  max-width: 872px;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
+  .map-radar {
+    position: absolute;
+    left: 50%;
+    bottom: -200px;
+    transform: translateX(-50%);
+
+    width: 420px;
+    height: 420px;
+
+    @media (max-width: 767px) {
+      width: 320px;
+      height: 320px;
+      bottom: -160px;
+    }
+
+    @media (max-width: 575px) {
+      width: 240px;
+      height: 240px;
+      bottom: -120px;
+    }
+
+    .radar-svg {
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+.starlink-backed-container {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  justify-content: center;
+  align-items: center;
+  padding: 80px 0px;
+  @media (max-width: 767px) {
+    padding: 60px 16px;
+  }
+}
+.starlink-backed-content {
+  text-align: center;
+  .starlink-backed-h3 {
+    font-size: 40px;
+    @media (max-width: 767px) {
+      font-size: 32px;
+    }
+  }
+  .starlink-backed-body {
+    font-size: 20px;
+    @media (max-width: 767px) {
+      font-size: 16px;
+    }
+  }
+}
+.starlink-backed-header {
+  display: inline-flex;
+  padding: 12px;
+  align-items: center;
+  gap: 12px;
+  border-radius: 16px;
+  border: 1px solid #042b22;
+}
+.starlink-chip {
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0;
+  @media (max-width: 767px) {
+    font-size: 16px;
+  }
+}

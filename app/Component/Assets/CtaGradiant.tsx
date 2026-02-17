@@ -12,7 +12,7 @@ export default function CtaGradiant() {
         height="850"
         rx="10"
         fill="url(#paint0_radial_6408_82)"
-        fill-opacity="0.4"
+        fillOpacity="0.4"
       />
       <defs>
         <radialGradient

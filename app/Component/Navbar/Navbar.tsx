@@ -8,6 +8,7 @@ import axios from "../../lib/axios";
 import toast from "react-hot-toast";
 import "./Navbar.scss";
 import ConnectionModal from "../Home/ConnectionModal/ConnectionModal";
+import Link from "next/link";
 
 export default function Navbar() {
   const [modalOpen, setModalOpen] = useState(false);
@@ -47,7 +48,8 @@ export default function Navbar() {
           ease: "easeOut",
         }}
       >
-        <Logo />
+        <Link href="/">
+          <Logo /></Link>
         <button className="button primary-fill-button" onClick={openModal}>
           Order Now
         </button>

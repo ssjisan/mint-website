@@ -1,32 +1,68 @@
-.success-card {
+.success-storis-cover {
+  height: 420px;
   width: 100%;
-  border: 1px solid red;
-  height: 220px;
-  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  border-radius: 16px;
+  cursor: pointer; // optional: indicate it's interactive
+  transition: transform 0.3s ease; // smooth scaling
 
-  .success-card-img {
-    height: 100%;
+  @media (max-width: 767px) {
+    height: 360px;
+  }
+
+  .cover-img {
     object-fit: cover;
+    object-position: top;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.5s ease; // smooth zoom
   }
 
-  .success-card-gradient {
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+  // Gradient overlay
+  .overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to top,
+      rgba(7, 7, 8, 1) 0%,
+      rgba(7, 7, 8, 0.5) 50%,
+      rgba(7, 7, 8, 0) 100%
+    );
     z-index: 1;
+    transition: background 0.3s ease; // smooth darken on hover
   }
 
-  .success-card-content {
+  // Bottom-left content
+  .card-content {
+    position: absolute;
+    bottom: 16px;
+    left: 16px;
+    right: 16px;
     z-index: 2;
   }
 
   .success-card-btn {
-    bottom: 1rem;
-    right: 1rem;
-    opacity: 0;
-    z-index: 2;
-    transition: opacity 0.3s ease;
+    background-color: transparent;
+    padding: 8px 16px;
+    border: none;
+    color: #fff;
   }
 
-  &:hover .success-card-btn {
-    opacity: 1;
+  // ----- Hover effect -----
+  &:hover {
+    .cover-img {
+      transform: scale(1.05); // slight zoom
+    }
+
+    .overlay {
+      background: linear-gradient(
+        to top,
+        rgba(7, 7, 8, 1) 0%,
+        rgba(7, 7, 8, 0.7) 50%,
+        // darker middle
+        rgba(7, 7, 8, 0.1) 100%
+      );
+    }
   }
 }

@@ -1,0 +1,44 @@
+.success-stories-list-container {
+  padding: 120px 0px 60px 0px;
+  @media (max-width: 767px) {
+    padding: 80px 16px;
+  }
+}
+.success-stories-header-with-search {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  @media (max-width: 575px) {
+    flex-direction: column;
+    gap: 16px;
+  }
+  .success-stories-container-heading {
+    font-size: 40px;
+    @media (max-width: 767px) {
+      font-size: 32px;
+    }
+  }
+  input {
+    padding: 0.6rem 0.8rem;
+    border: 1px solid #616161;
+    background-color: #19191a;
+    border-radius: 8px;
+    font-size: 1rem;
+    color: white;
+    max-width: 320px;
+    width: 100%;
+    transition: all 0.2s ease;
+
+    &::placeholder {
+      color: #aaa;
+    }
+
+    &:focus {
+      outline: none;
+      border-color: #2fbf9b;
+      box-shadow: 0 0 0 2px rgba(47, 191, 155, 0.2);
+    }
+  }
+}

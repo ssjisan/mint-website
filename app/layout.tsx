@@ -5,6 +5,8 @@ import "./globals.scss";
 import Script from "next/script";
 import { Toaster } from "react-hot-toast";
 import ChatBot from "./Component/ChatBot";
+import Navbar from "./Component/Navbar/Navbar";
+import Footer from "./Component/Home/Footer/Footer";
 
 const barlow = Barlow({
   subsets: ["latin"],
@@ -49,7 +51,9 @@ export default function RootLayout({
       <body className={` ${barlow.variable}`}>
         <Toaster />
         <ChatBot />
+        <Navbar />
         {children}
+        <Footer />
       </body>
     </html>
   );
