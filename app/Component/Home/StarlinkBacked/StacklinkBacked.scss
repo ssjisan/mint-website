@@ -35,7 +35,7 @@
 .starlink-backed-container {
   display: flex;
   flex-direction: column;
-  gap: 40px;
+  gap: 60px;
   justify-content: center;
   align-items: center;
   padding: 80px 0px;
@@ -45,6 +45,9 @@
 }
 .starlink-backed-content {
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
   .starlink-backed-h3 {
     font-size: 40px;
     @media (max-width: 767px) {
@@ -53,6 +56,8 @@
   }
   .starlink-backed-body {
     font-size: 20px;
+    width: 100%;
+    max-width: 860px;
     @media (max-width: 767px) {
       font-size: 16px;
     }

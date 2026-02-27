@@ -1,6 +1,8 @@
 :root {
   --background: #070708;
   --foreground: #ffffff;
+  --shop-background: #ffffff;
+  --shop-foreground: #070708;
 
   // --------------------
   // Primary colors shade
@@ -12,10 +14,18 @@
   --primary-700: #19a784;
   --primary-900: #19a784;
 }
+
+html {
+  scroll-behavior: smooth;
+}
 body {
   color: var(--foreground);
   background: var(--background);
   font-family: var(--font-barlow), system-ui, sans-serif;
+}
+[data-theme="shop"] body {
+  background-color: var(--shop-background);
+  color: var(--foreground);
 }
 * {
   padding: 0;
@@ -36,6 +46,7 @@ body {
   font-weight: 500;
   border-radius: 12px;
   height: fit-content;
+  text-decoration: none;
 }
 .primary-fill-button {
   border: 1px solid #2fbf9b;

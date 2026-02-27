@@ -3,15 +3,6 @@
 import Image from "next/image";
 import { motion, useMotionValue, useMotionTemplate } from "framer-motion";
 
-import AbstractGrid from "../../Assets/AbstractGrid";
-import FourKStreaming from "../../Assets/FourKStreaming";
-import LightRayTypeOne from "../../Assets/LightRayTypeOne";
-import LightRayTypeTwo from "../../Assets/LightRayTypeTwo";
-import LightRayTypeFour from "../../Assets/LightRayTypeFour";
-import FadeOut from "../../Assets/FadeOut";
-import PolkaDot from "../../Assets/PolkaDot";
-import AlwaysConnected from "../../Assets/AlwaysConnected";
-
 import "./MintDifference.scss";
 import LightRayTypeFive from "../../Assets/LightRayTypeFive";
 import LightRayTypeSix from "../../Assets/LightRayTypeSix";
@@ -103,7 +94,7 @@ export default function MintDifference() {
     >
       {/* TITLE */}
       <motion.h2 className="heading-h2" variants={titleVariants}>
-        The mint Difference
+        Mint,<br />The  Difference
       </motion.h2>
 
       <div className="row g-3">

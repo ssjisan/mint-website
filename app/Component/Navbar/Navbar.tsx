@@ -9,6 +9,7 @@ import toast from "react-hot-toast";
 import "./Navbar.scss";
 import ConnectionModal from "../Home/ConnectionModal/ConnectionModal";
 import Link from "next/link";
+import ShopIcon from "../Assets/ShopIcon";
 
 export default function Navbar() {
   const [modalOpen, setModalOpen] = useState(false);
@@ -48,11 +49,36 @@ export default function Navbar() {
           ease: "easeOut",
         }}
       >
-        <Link href="/">
-          <Logo /></Link>
-        <button className="button primary-fill-button" onClick={openModal}>
+        <Link href="/" className="logo">
+          <Logo width={64} height={64} />
+        </Link>
+        <div className="nav-menu">
+          <Link className="nav-pill" href="#why-mint">
+            <p>Why Mint?</p>
+          </Link>
+          <Link className="nav-pill" href="#pricing">
+            <p>Pricing</p>
+          </Link>
+          <Link className="nav-pill" href="#security">
+            <p>Security</p>
+          </Link>
+          <Link className="nav-pill" href="#starlink-connectivity">
+            <p>Starlink Connectivity</p>
+          </Link>
+          <Link className="nav-pill" href="#stories">
+            <p>Success Stories</p>
+          </Link>
+
+          <Link className="nav-pill" href="#experience">
+            <p>Experience</p>
+          </Link>
+        </div>
+        {/* <button className="button primary-fill-button" onClick={openModal}>
           Order Now
-        </button>
+        </button> */}
+        <Link className="button primary-fill-button" href="/shop">
+          <ShopIcon /> Shop
+        </Link>
       </motion.div>
 
       {/* Modal */}
