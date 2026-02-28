@@ -1,5 +1,27 @@
 "use client";
 import "./ProductBasic.scss"
+import { Discount } from "../../../lib/types/products";
+import ContentRenderer from "@/app/lib/html2text";
+
+interface Brand {
+    name: string;
+}
+
+interface ProductBasicProps {
+    name: string;
+    brand?: Brand;
+    price: number;
+    finalPrice?: number;
+    shortDescriptionHTML?: string;
+    productCode?: string;
+    showPrice?: boolean;
+    discount?: Discount;
+    onViewMore?: () => void;
+    category?: { name?: string };
+    onPreOrder?: () => void;
+}
+
+
 export default function ProductBasic({
     name,
     brand,
@@ -10,36 +32,35 @@ export default function ProductBasic({
     showPrice,
     discount,
     onViewMore,
-}) {
+    onPreOrder
+}: ProductBasicProps) {
     return (
-        <div className="p-3">
-
-            {/* Product Name */}
-            <h2 className="mb-3">{name}</h2>
-
-            {/* Brand + Product Code */}
-            <div className="d-flex align-items-center gap-3 mb-3 flex-wrap">
+        <div>
+            <h2 className="product-name">{name}</h2>
+            <div className="info-deck">
                 {brand?.name && (
-                    <span className="badge bg-light text-dark border px-3 py-2">
-                        <span className="text-muted me-1">Brand:</span>
+                    <div className="info-deck-badge">
+                        <span className="badge-title">Brand:</span>
                         <strong>{brand.name}</strong>
-                    </span>
+                    </div>
                 )}
 
                 {productCode && (
-                    <span className="badge bg-light text-secondary border px-3 py-2">
-                        {productCode}
-                    </span>
+                    <div className="info-deck-badge">
+                        <span className="badge-title">Code:</span>
+                        <strong>{productCode}</strong>
+                    </div>
+
                 )}
             </div>
 
             {/* Price Section */}
-            <div className="mb-3">
+            <div className="price-deck">
                 {showPrice ? (
                     discount?.isActive ? (
                         <div className="d-flex align-items-center gap-3">
-                            <h1 className="text-primary mb-0">৳{finalPrice}</h1>
-                            <span className="text-muted text-decoration-line-through fs-5">
+                            <h1>৳{finalPrice}</h1>
+                            <span className="text-decoration-line-through fs-5">
                                 ৳{price}
                             </span>
                         </div>
@@ -52,24 +73,22 @@ export default function ProductBasic({
             </div>
 
             {/* Pre Order Button */}
-            <div className="mb-3">
-                <button className="btn btn-primary">
+            <div className="pre-order-button-deck">
+                <button className="button pre-order-button" onClick={onPreOrder}>
                     Pre-order
                 </button>
             </div>
 
-            {/* Short Description */}
             {shortDescriptionHTML && (
-                <div
-                    className="mb-3"
-                    dangerouslySetInnerHTML={{ __html: shortDescriptionHTML }}
-                />
+                <div className="mb-3">
+                    <ContentRenderer html={shortDescriptionHTML} />
+                </div>
             )}
 
             {/* View More Button */}
             {onViewMore && (
                 <button
-                    className="btn btn-link p-0 text-decoration-underline"
+                    className="details-page-view-more-button"
                     onClick={onViewMore}
                 >
                     View more details

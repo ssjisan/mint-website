@@ -68,7 +68,9 @@ export default function ShopPage() {
         };
 
         fetchProducts();
-    }, [selectedBrands, selectedCategories, minPrice, maxPrice]); return (
+    }, [selectedBrands, selectedCategories, minPrice, maxPrice]);
+    const shopPrimaryImage = selectedProduct?.images?.[0] || null;
+    return (
         <div className='shop-page-container'>
             <div className='shop-page-header'>
                 <button
@@ -145,6 +147,8 @@ export default function ShopPage() {
                 <PreOrderModal
                     product={selectedProduct}
                     onClose={() => setSelectedProduct(null)}
+                    primaryImage={shopPrimaryImage}
+
                 />
             )}
         </div>

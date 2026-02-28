@@ -1,0 +1,77 @@
+.product-name {
+  font-size: 40px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.info-deck {
+  padding: 16px 0px;
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+}
+.info-deck-badge {
+  padding: 4px 8px;
+  background-color: var(--secondary-100);
+  color: var(--secondary-500);
+  border-radius: 100px;
+  font-size: 12px;
+  .badge-title {
+    color: #9397ad;
+  }
+}
+.price-deck {
+  padding: 16px 0px;
+  h1 {
+    font-size: 40px;
+    font-weight: 700;
+    color: var(--secondary-500);
+  }
+  span {
+    color: #9397ad;
+    font-weight: 500;
+    font-size: 16px;
+  }
+}
+.pre-order-button-deck {
+  padding: 16px 0px;
+
+  .pre-order-button {
+    border: 1px solid var(--secondary-500);
+    background: var(--secondary-500);
+    color: #fff;
+    width: 180px;
+    border-radius: 8px;
+    padding: 12px 24px;
+    transition: all 0.3s ease;
+
+    box-shadow:
+      0 4px 30px 0 rgba(124, 58, 237, 0.6),
+      0 0 0 4px rgba(124, 58, 237, 0.1);
+  }
+
+  .pre-order-button:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+      0 8px 36px rgba(124, 58, 237, 0.7),
+      0 0 0 6px rgba(124, 58, 237, 0.18);
+
+    filter: brightness(1.05);
+  }
+}
+
+.details-page-view-more-button {
+  color: var(--secondary-500);
+  text-decoration: underline;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  transition:
+    transform 0.25s ease,
+    color 0.25s ease;
+}
+
+.details-page-view-more-button:hover {
+  transform: translateY(-3px);
+}

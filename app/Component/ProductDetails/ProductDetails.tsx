@@ -3,21 +3,22 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useParams } from "next/navigation";
 import axios from "../../lib/axios";
-
+import { Product } from "../../lib/types/products";
 import ProductGallery from "./ProductGallery/ProductGallery";
 import ProductBasic from "./ProductBasic/ProductBasic";
-import ProductDescription from "./ProductDescription";
+import ProductDescription from "./ProductDescription/ProductDescription";
 import "./ProductDetatils.scss"
+import PreOrderModal from "../PreOrderModal/PreOrderModal";
 
 export default function ProductDetails() {
     const { slug } = useParams();
-    console.log(slug);
 
-    const [product, setProduct] = useState(null);
+    const [product, setProduct] = useState<Product | null>(null);
     const [loading, setLoading] = useState(true);
-
-    const detailsRef = useRef(null);
-
+    const [isPreOrderOpen, setIsPreOrderOpen] = useState(false);
+    const detailsRef = useRef<HTMLDivElement | null>(null);
+    const openPreOrder = () => setIsPreOrderOpen(true);
+    const closePreOrder = () => setIsPreOrderOpen(false);
     const scrollToDetails = () => {
         detailsRef.current?.scrollIntoView({
             behavior: "smooth",
@@ -73,6 +74,10 @@ export default function ProductDetails() {
         return Math.ceil(calculated);
     }, [product, price]);
 
+    const primaryImage = useMemo(() => {
+        return sortedImages?.[0] || null;
+    }, [sortedImages]);
+
     if (loading) return <div className="container product-details-container">Loading...</div>;
     if (!product) return <div className="container product-details-container">Product not found</div>;
 
@@ -97,6 +102,7 @@ export default function ProductDetails() {
                         productCode={product.productCode}
                         discount={product.discount}
                         onViewMore={scrollToDetails}
+                        onPreOrder={openPreOrder}
                     />
                 </div>
 
@@ -110,6 +116,13 @@ export default function ProductDetails() {
                     </div>
                 </div>
             </div>
+            {isPreOrderOpen && product && (
+                <PreOrderModal
+                    product={product}
+                    onClose={closePreOrder}
+                    primaryImage={primaryImage}
+                />
+            )}
         </div>
     );
 }

@@ -10,6 +10,10 @@ import Placeholder from "../../../public/Sub Container.png"
 interface Props {
     product: Product;
     onClose: () => void;
+    primaryImage?: {
+        url: string;
+        alt?: string;
+    } | null;
 }
 interface Captcha {
     id: string;
@@ -23,7 +27,9 @@ interface FormData {
     address: string;
     captchaAnswer: string;
 }
-export default function PreOrderModal({ product, onClose }: Props) {
+export default function PreOrderModal({ product,
+    onClose,
+    primaryImage, }: Props) {
     const [captcha, setCaptcha] = useState<Captcha | null>(null);
     const [formData, setFormData] = useState<FormData>({
         name: '',
@@ -90,7 +96,7 @@ export default function PreOrderModal({ product, onClose }: Props) {
                     <div className="product-preview">
                         <div className="preview-image">
                             <Image
-                                src={product.image?.url || Placeholder}
+                                src={primaryImage?.url || Placeholder}
                                 alt={product.name}
                                 width={64}
                                 height={64}

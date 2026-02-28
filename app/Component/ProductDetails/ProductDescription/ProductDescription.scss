@@ -1,0 +1,28 @@
+.tab-button {
+  border: none;
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 700;
+  border-radius: 12px;
+  &.filled {
+    background-color: var(--secondary-500);
+    color: #fff;
+  }
+  &.outlined {
+    border: 2px solid var(--secondary-500);
+    color: var(--secondary-500);
+    background-color: transparent;
+  }
+}
+.description-container {
+  background-color: #1f1f1f;
+}
+.specification-part {
+  background-color: var(--primary-100);
+  strong {
+    color: var(--primary-500);
+  }
+}
+.specification-label {
+  color: #9397ad;
+}
