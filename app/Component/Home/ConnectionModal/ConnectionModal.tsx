@@ -5,13 +5,18 @@ import axios from "../../../lib/axios";
 import toast from "react-hot-toast";
 import "./ConnectionModal.scss";
 import Close from "../../Assets/Close";
-
+import axiosLib from "axios"
 interface Package {
   _id: string;
   packageName: string;
   speedMbps: number;
   price: number;
   type: "residential" | "corporate";
+}
+
+interface Captcha {
+  id: string;
+  question: string;
 }
 
 interface ConnectionModalProps {
@@ -26,6 +31,9 @@ interface ConnectionRequestPayload {
   packageId?: string;
   packageType?: "residential" | "corporate";
   companyName?: string;
+  referral?: boolean;
+  captchaId?: string;
+  captchaAnswer?: string;
 }
 export default function ConnectionModal({
   selectedPackage,
@@ -36,13 +44,14 @@ export default function ConnectionModal({
   const [email, setEmail] = useState("");
   const [address, setAddress] = useState("");
   const [companyName, setCompanyName] = useState("");
-  const [captchaA, setCaptchaA] = useState(0);
-  const [captchaB, setCaptchaB] = useState(0);
+
+  const [captcha, setCaptcha] = useState<Captcha | null>(null);
   const [captchaAnswer, setCaptchaAnswer] = useState("");
   const [packages, setPackages] = useState<Package[]>([]);
   const [selectedPkg, setSelectedPkg] = useState<Package | null>(
     selectedPackage,
   );
+
   useEffect(() => {
     // When the modal is open, prevent background scroll
     document.body.style.overflow = "hidden";
@@ -52,18 +61,18 @@ export default function ConnectionModal({
       document.body.style.overflow = "";
     };
   }, []);
-  // Generate simple captcha
-  const generateCaptcha = () => {
-    const a = Math.floor(Math.random() * 20) + 1;
-    const b = Math.floor(Math.random() * 20) + 1;
-    setCaptchaA(a);
-    setCaptchaB(b);
-    setCaptchaAnswer("");
+  const fetchCaptcha = async () => {
+    try {
+      const res = await axios.get("/captcha");
+      setCaptcha(res.data.captcha);
+      setCaptchaAnswer("");
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   useEffect(() => {
-    generateCaptcha();
-    // Fetch packages from API
+    fetchCaptcha()
     axios.get("/packages").then((res) => setPackages(res.data.packages));
   }, []);
 
@@ -75,8 +84,8 @@ export default function ConnectionModal({
     if (!name || !phone || !email || !address) {
       return toast.error("Please fill all required fields.");
     }
-    if (parseInt(captchaAnswer) !== captchaA + captchaB) {
-      return toast.error("Captcha answer is incorrect.");
+    if (!captcha) {
+      return toast.error("Captcha not loaded.");
     }
 
     try {
@@ -87,6 +96,9 @@ export default function ConnectionModal({
         address,
         packageId: selectedPkg?._id,
         packageType: selectedPkg?.type,
+        referral: false,
+        captchaId: captcha.id,
+        captchaAnswer,
       };
 
       if (selectedPkg?.type === "corporate") {
@@ -102,8 +114,13 @@ export default function ConnectionModal({
         toast.success("Connection request submitted successfully!");
         onClose();
       }
-    } catch (err: any) {
-      toast.error(err.response?.data?.error || "Failed to submit request");
+    } catch (err: unknown) {
+      if (axiosLib.isAxiosError(err)) {
+        const errorMessage = err.response?.data?.message || 'Something went wrong';
+        toast.error(errorMessage);
+      } else {
+        toast.error('An unexpected error occurred');
+      }
     }
   };
 
@@ -172,17 +189,16 @@ export default function ConnectionModal({
           )}
         </div>
 
-        {/* CAPTCHA */}
-        <div className="form-group">
-          <label>
-            Solve: {captchaA} + {captchaB} = ?
-          </label>
-          <input
-            value={captchaAnswer}
-            onChange={(e) => setCaptchaAnswer(e.target.value)}
-          />
-        </div>
-
+        {captcha && (
+          <div className="form-group">
+            <label>{captcha.question}</label>
+            <input
+              value={captchaAnswer}
+              onChange={(e) => setCaptchaAnswer(e.target.value)}
+              placeholder="Answer"
+            />
+          </div>
+        )}
         <button className="submit-btn" onClick={handleSubmit}>
           Submit Request
         </button>
