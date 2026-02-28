@@ -34,3 +34,11 @@ export interface ProductCardProps {
     image?: string;
     discount?: Discount;
 }
+
+export interface ProductQueryParams {
+    isPublished: boolean;
+    brand?: string;
+    category?: string;
+    minPrice?: string;
+    maxPrice?: string;
+}

@@ -2,9 +2,10 @@
 import { useEffect, useState } from 'react';
 import axios from '../../lib/axios';
 import ProductCard from './ProductCard';
-import { Product } from '../../lib/types/products';
+import { Product, ProductQueryParams } from '../../lib/types/products';
 import './ShopPage.scss';
 import FilterDrawer from '../ShopFilter/FilterDrawer';
+import PreOrderModal from '../PreOrderModal/PreOrderModal';
 
 export default function ShopPage() {
     const [products, setProducts] = useState<Product[]>([]);
@@ -16,6 +17,7 @@ export default function ShopPage() {
     const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
     const [minPrice, setMinPrice] = useState('');
     const [maxPrice, setMaxPrice] = useState('');
+    const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
     // Load Brands
     useEffect(() => {
         const fetchBrands = async () => {
@@ -40,7 +42,7 @@ export default function ShopPage() {
             try {
                 setLoading(true);
 
-                const params: any = { isPublished: true };
+                const params: ProductQueryParams = { isPublished: true };
 
                 if (selectedBrands.length > 0) {
                     params.brand = selectedBrands.join(',');
@@ -105,11 +107,9 @@ export default function ShopPage() {
                                 key={product._id}
                             >
                                 <ProductCard
-                                    name={product.name}
-                                    price={product.price}
-                                    image={product.image.url}
-                                    slug={product?.slug}
-                                    discount={product.discount}
+
+                                    product={product}
+                                    onPreOrderClick={() => setSelectedProduct(product)}
                                 />
                             </div>
                         );
@@ -140,6 +140,12 @@ export default function ShopPage() {
                         onClick={() => setIsFilterOpen(false)}
                     />
                 </div>
+            )}
+            {selectedProduct && (
+                <PreOrderModal
+                    product={selectedProduct}
+                    onClose={() => setSelectedProduct(null)}
+                />
             )}
         </div>
     );
