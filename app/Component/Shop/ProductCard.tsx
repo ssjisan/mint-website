@@ -35,6 +35,7 @@ export default function ProductCard({
             : `৳${product.discount.value} OFF`
         : null;
 
+
     return (
         <Link href={`/product/${product.slug}`} className='product-card'>
             <div className='product-card-image'>

@@ -74,9 +74,6 @@ export default function ProductDetails() {
         return Math.ceil(calculated);
     }, [product, price]);
 
-    const primaryImage = useMemo(() => {
-        return sortedImages?.[0] || null;
-    }, [sortedImages]);
 
     if (loading) return <div className="container product-details-container">Loading...</div>;
     if (!product) return <div className="container product-details-container">Product not found</div>;
@@ -120,7 +117,6 @@ export default function ProductDetails() {
                 <PreOrderModal
                     product={product}
                     onClose={closePreOrder}
-                    primaryImage={primaryImage}
                 />
             )}
         </div>

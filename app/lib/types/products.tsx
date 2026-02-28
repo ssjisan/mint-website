@@ -39,7 +39,7 @@ export interface Product {
     };
 
     images?: ProductImage[];
-
+    image?: ProductImage;
     shortDescriptionHTML?: string;
     descriptionHTML?: string;
     specifications?: Specifications[];
