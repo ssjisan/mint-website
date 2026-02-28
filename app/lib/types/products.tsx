@@ -13,17 +13,41 @@ export interface ProductImage {
     isPrimary?: boolean;
 }
 
+export interface SpecificationItem {
+    label: string;
+    value: string;
+}
+
+// Group of specifications
+export interface Specifications {
+    groupTitle: string;
+    items: SpecificationItem[];
+}
 // API product (what comes from backend)
 export interface Product {
     _id: string;
     name: string;
     price: number;
-    discount?: Discount;
-    image?: {
-        url: string;
-    };
     slug: string;
 
+    brand?: {
+        name: string;
+    };
+
+    category?: {
+        name: string;
+    };
+
+    images?: ProductImage[];
+
+    shortDescriptionHTML?: string;
+    descriptionHTML?: string;
+    specifications?: Specifications[];
+
+    productCode?: string;
+    showPrice?: boolean;
+
+    discount?: Discount;
 }
 
 // Props for ProductCard component
