@@ -52,12 +52,11 @@ export default function SoC() {
                                 <Radar />
                                 <p>SOC as Service</p>
                             </div>
-                            <h4>Advanced Security Monitoring for Your Network</h4>
+                            <h4>24×7×365 Managed Security Operations</h4>
                         </div>
 
                         <p>
-                            From routers and firewalls to servers and cloud systems, we ensure
-                            your entire environment stays secure, stable, and resilient.
+                            Powered by advanced XDR and SIEM platforms including Stellar Cyber and Microsoft Sentinel, our SOC delivers continuous, enterprise-grade monitoring and rapid incident response.
                         </p>
 
                         <div className="soc-points-deck">
@@ -69,7 +68,7 @@ export default function SoC() {
 
                         <div className="button-deck-soc">
                             <button className="button primary-fill-button">
-                                Talk to sales team
+                                Request for Demo
                             </button>
                         </div>
                     </motion.div>

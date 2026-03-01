@@ -97,7 +97,7 @@ export default function MintDifference() {
         Mint,<br />The  Difference
       </motion.h2>
 
-      <div className="row g-3">
+      <div className="row g-5">
         <div className="col-12 col-sm-12 col-md-7 col-lg-7">
           <ExperienceCard>
             {/* Absolute image layer */}
@@ -154,32 +154,6 @@ export default function MintDifference() {
           <ExperienceCard>
             <div className="card-image-layer">
               <Image
-                src="/worldClassCore.png"
-                alt=""
-                width={280}
-                height={280}
-              />
-            </div>
-
-            {/* Graphics */}
-            <div className="second-graphics">
-              <LightRayTypeSix />
-            </div>
-
-            {/* Content */}
-            <div className="difference-content">
-              <h6 className="heading-h6">True Exclusivity</h6>
-              <p className="subtitle">
-                Active only in Dhaka’s premier neighborhoods to ensure undivided
-                network quality.
-              </p>
-            </div>
-          </ExperienceCard>
-        </div>
-        <div className="col-12 col-sm-12 col-md-7 col-lg-7">
-          <ExperienceCard>
-            <div className="card-image-layer">
-              <Image
                 src="/radicalSimplicity.png"
                 alt=""
                 width={280}
@@ -199,6 +173,32 @@ export default function MintDifference() {
               </p>
             </div>
           </ExperienceCard>
+        </div>
+        <div className="col-12 col-sm-12 col-md-7 col-lg-7">
+          <ExperienceCard>
+            <div className="card-image-layer">
+              <Image
+                src="/worldClassCore.png"
+                alt=""
+                width={280}
+                height={280}
+              />
+            </div>
+
+            {/* Graphics */}
+            <div className="second-graphics">
+              <LightRayTypeSix />
+            </div>
+
+            {/* Content */}
+            <div className="difference-content">
+              <h6 className="heading-h6">Zero-Congestion Design</h6>
+              <p className="subtitle">
+                Peak hours don&apos;t exist here. Enjoy uninterrupted, dedicated bandwidth that never fluctuates, no matter who else is online.
+              </p>
+            </div>
+          </ExperienceCard>
+
         </div>
       </div>
     </motion.section>

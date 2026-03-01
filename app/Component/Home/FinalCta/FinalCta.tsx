@@ -127,7 +127,7 @@ export default function FinalCta() {
         </div>
 
         <button className="button primary-fill-button" onClick={openModal}>
-          Order Now
+          Get Mint
         </button>
 
         {/* Contact */}

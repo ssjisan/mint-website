@@ -1,10 +1,34 @@
 "use client";
 
+import { useState } from "react";
 import { motion, Variants } from "framer-motion";
 import HeroSectionGradiant from "../../Assets/HeroSectionGradiant";
 import "./HeroSection.scss";
 
+const SNOW_COUNT = 20;
+
+type Snowflake = {
+  x: number;
+  size: number;
+  opacity: number;
+  duration: number;
+  delay: number;
+  drift: number;
+};
+
 export default function HeroSection() {
+  /* ================= CREATE SNOW ONCE (NO EFFECT) ================= */
+  const [snowflakes] = useState<Snowflake[]>(() =>
+    Array.from({ length: SNOW_COUNT }).map(() => ({
+      x: Math.random() * 100,
+      size: Math.random() * 3 + 2,
+      opacity: Math.random() * 0.75 + 0.2,
+      duration: Math.random() * 12 + 12,
+      delay: Math.random() * -20,
+      drift: Math.random() * 80 - 40,
+    })),
+  );
+
   /* ================= ANIMATION VARIANTS ================= */
 
   const container: Variants = {
@@ -53,6 +77,27 @@ export default function HeroSection() {
 
       {/* ================= GRADIENT ================= */}
       <HeroSectionGradiant />
+
+      {/* ================= SNOW ================= */}
+      <div className="snow-wrapper">
+        {snowflakes.map((flake, i) => (
+          <span
+            key={i}
+            className="snowflake"
+            style={
+              {
+                left: `${flake.x}%`,
+                width: `${flake.size}px`,
+                height: `${flake.size}px`,
+                opacity: flake.opacity,
+                animationDuration: `${flake.duration}s`,
+                animationDelay: `${flake.delay}s`,
+                "--drift": `${flake.drift}px`,
+              } as React.CSSProperties
+            }
+          />
+        ))}
+      </div>
     </div>
   );
 }

@@ -53,32 +53,25 @@ export default function Navbar() {
           <Logo width={64} height={64} />
         </Link>
         <div className="nav-menu">
-          <Link className="nav-pill" href="#why-mint">
-            <p>Why Mint?</p>
+          <Link className="nav-pill" href="#residential">
+            <p>Residential</p>
           </Link>
-          <Link className="nav-pill" href="#pricing">
-            <p>Pricing</p>
+          <Link className="nav-pill" href="#enterprise">
+            <p>Enterprise</p>
           </Link>
           <Link className="nav-pill" href="#security">
             <p>Security</p>
           </Link>
-          <Link className="nav-pill" href="#starlink-connectivity">
-            <p>Starlink Connectivity</p>
-          </Link>
           <Link className="nav-pill" href="#stories">
             <p>Success Stories</p>
           </Link>
-
-          <Link className="nav-pill" href="#experience">
-            <p>Experience</p>
-          </Link>
         </div>
-        {/* <button className="button primary-fill-button" onClick={openModal}>
-          Order Now
-        </button> */}
-        <Link className="button primary-fill-button" href="/shop">
+        <button className="button primary-fill-button" onClick={openModal}>
+          Get Mint
+        </button>
+        {/* <Link className="button primary-fill-button" href="/shop">
           <ShopIcon /> Shop
-        </Link>
+        </Link> */}
       </motion.div>
 
       {/* Modal */}

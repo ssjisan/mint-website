@@ -73,3 +73,16 @@
   margin: auto;
   font-weight: 400;
 }
+.internet-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.circle-svg {
+  position: absolute;
+  top: -20%;
+  left: -10%;
+  width: 120%;
+  height: 140%;
+  pointer-events: none;
+}

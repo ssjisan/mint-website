@@ -12,24 +12,19 @@ export default function Home() {
   return (
     <div>
       <HeroSection />
-      <section id="why-mint">
-        <MintDifference />
-      </section>
-      <section id="pricing">
+      <MintDifference />
+      <section id="residential">
         <FoucsPackage />
       </section>
-      <CorporatePackage />
+      <section id="enterprise">
+        <CorporatePackage />
+      </section>
       <section id="security">
         <SoC />
       </section>
-      <section id="starlink-connectivity">
-        <StacklinkBacked />
-      </section>
+      <StacklinkBacked />
       <section id="stories">
         <SuccessStories />
-      </section>
-      <section id="experience">
-        <MintExperience />
       </section>
       <FinalCta />
     </div>
