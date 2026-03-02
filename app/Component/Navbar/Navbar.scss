@@ -10,8 +10,8 @@
   width: 100%;
   padding: 8px 24px;
   z-index: 100;
-  background: rgba(19, 15, 26, 0.18);
-  backdrop-filter: blur(10px);
+  // background: rgba(19, 15, 26, 0.18);
+  // backdrop-filter: blur(10px);
   @media (max-width: 767px) {
     padding: 0px 40px;
   }
@@ -25,6 +25,10 @@
   gap: 12px;
   align-items: center;
   justify-content: center;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  padding: 4px 8px;
 }
 .nav-pill {
   position: relative;

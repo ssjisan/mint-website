@@ -27,11 +27,7 @@ html {
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: var(--font-barlow), system-ui, sans-serif;
-}
-[data-theme="shop"] body {
-  background-color: var(--shop-background);
-  color: var(--foreground);
+  font-family: var(--font-manrope), system-ui, sans-serif;
 }
 * {
   padding: 0;

@@ -4,6 +4,11 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import Radar from "../../Assets/Radar";
 import "./SoC.scss";
+import LogManagment from "../../Assets/LogManagment";
+import Shield from "../../Assets/Shield";
+import Alert from "../../Assets/Alert";
+import Investigation from "../../Assets/Investigation";
+import Dashboard from "../../Assets/Dashboard";
 
 /* ===== Animation Variants ===== */
 
@@ -34,6 +39,31 @@ const rightVariants = {
     },
 };
 
+
+const socPoints = [
+    {
+        icon: Shield,
+        title: "Real-time threat detection & proactive hunting",
+    },
+    {
+        icon: Alert,
+        title: "Accurate alert triage and prioritization",
+    },
+    {
+        icon: Investigation,
+        title: "Fast incident investigation & response",
+    },
+    {
+        icon: LogManagment,
+        title: "Centralized log management & correlation",
+    },
+    {
+        icon: Dashboard,
+        title: "Compliance-aligned reporting & executive dashboards",
+    },
+];
+
+
 export default function SoC() {
     return (
         <motion.section
@@ -50,7 +80,7 @@ export default function SoC() {
                         <div className="soc-content-header">
                             <div className="soc-chip">
                                 <Radar />
-                                <p>SOC as Service</p>
+                                <p>SOC as Service (SOCaaS)</p>
                             </div>
                             <h4>24×7×365 Managed Security Operations</h4>
                         </div>
@@ -60,10 +90,16 @@ export default function SoC() {
                         </p>
 
                         <div className="soc-points-deck">
-                            <p>🛡️ 24/7 Real-Time Monitoring</p>
-                            <p>⚠️ Advanced Threat Detection</p>
-                            <p>📊 Log Management & SIEM Analysis</p>
-                            <p>📑 Compliance & Reporting</p>
+                            {socPoints.map((item, index) => {
+                                const IconComponent = item.icon;
+
+                                return (
+                                    <div className="soc-points-list" key={index}>
+                                        <IconComponent />
+                                        <p>{item.title}</p>
+                                    </div>
+                                );
+                            })}
                         </div>
 
                         <div className="button-deck-soc">

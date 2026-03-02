@@ -66,6 +66,7 @@
   position: absolute;
   bottom: 0;
   right: 0;
+  mix-blend-mode: multiply;
   img {
     object-fit: contain;
   }

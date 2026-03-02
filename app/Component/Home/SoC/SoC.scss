@@ -41,7 +41,8 @@
 .soc-points-deck {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 16px;
+  padding: 0px 24px;
   p {
     font-size: 18px;
   }
@@ -71,4 +72,10 @@
 }
 .button-deck-soc {
   padding-top: 24px;
+}
+
+.soc-points-list {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
 }

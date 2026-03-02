@@ -71,54 +71,41 @@ export default function CorporatePackage() {
 
           return (
             <div className="col-12 col-md-6 col-lg-4" key={pkg._id}>
-              <ReactParallaxTilt
-                tiltMaxAngleX={8}
-                tiltMaxAngleY={8}
-                perspective={500}
-                glareEnable={true}
-                glareMaxOpacity={0.2}
-                glareColor="#ffffff00"
-                glarePosition="all"
-                transitionSpeed={400}
-              >
-                <div
-                  className={`corporate-package-card ${
-                    index === 1 ? "famous-package" : ""
+              <div
+                className={`corporate-package-card ${index === 1 ? "famous-package" : ""
                   }`}
-                >
-                  <div className="glow-wrapper-two">
-                    <Glow />
-                  </div>
-
-                  <div className="package-name-volume">
-                    <h4 className="body">{pkg.packageName}</h4>
-                    <p className="body-one">
-                      BDT {pkg.price.toLocaleString()} / Month
-                    </p>
-                  </div>
-
-                  <h2 className="heading-h4">{formatSpeed(pkg.speedMbps)}</h2>
-
-                  <button
-                    className={`button ${UI.buttonClass}`}
-                    onClick={() => openModal(pkg)}
-                  >
-                    Choose {formatSpeed(pkg.speedMbps)}
-                  </button>
-
-                  <div className="package-points-deck">
-                    {pkg?.items?.map((point, i) => (
-                      <div className="package-point" key={point.id || i}>
-                        <div className="package-point-bullet">
-                          <TickMarked />
-                        </div>
-                        <p className="subtitle">{point.title}</p>{" "}
-                        {/* Use title */}
-                      </div>
-                    ))}
-                  </div>
+              >
+                <div className="glow-wrapper-two">
+                  <Glow />
                 </div>
-              </ReactParallaxTilt>
+
+                <div className="package-name-volume">
+                  <h4 className="body">{pkg.packageName}</h4>
+                  <p className="body-one">
+                    BDT {pkg.price.toLocaleString()} / Month
+                  </p>
+                </div>
+
+                <h2 className="heading-h4">{formatSpeed(pkg.speedMbps)}</h2>
+
+                <button
+                  className={`button ${UI.buttonClass}`}
+                  onClick={() => openModal(pkg)}
+                >
+                  Choose {formatSpeed(pkg.speedMbps)}
+                </button>
+
+                <div className="package-points-deck">
+                  {pkg?.items?.map((point, i) => (
+                    <div className="package-point" key={point.id || i}>
+                      <div className="package-point-bullet">
+                        <TickMarked />
+                      </div>
+                      <p className="subtitle">{point.title}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
           );
         })}

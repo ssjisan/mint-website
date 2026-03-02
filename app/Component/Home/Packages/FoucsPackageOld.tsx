@@ -56,39 +56,50 @@ export default function FoucsPackage() {
 
       {/* ---------------- Card ---------------- */}
       <div className="focus-package-card-container">
-        <div className="focus-package-card">
-          <div className="glow-wrapper">
-            <GlowingStar />
-          </div>
+        <ReactParallaxTilt
+          tiltMaxAngleX={8}
+          tiltMaxAngleY={8}
+          perspective={500}
+          glareEnable={true}
+          glareMaxOpacity={0.2}
+          glareColor="#ffffff00"
+          glarePosition="all"
+          transitionSpeed={400}
+        >
+          <div className="focus-package-card">
+            <div className="glow-wrapper">
+              <GlowingStar />
+            </div>
 
-          {/* Dynamic Name + Price */}
-          <div className="package-name-volume">
-            <h4 className="body">{pkg?.packageName}</h4>
-            <p className="body-one">৳{pkg?.price}/month</p>
-          </div>
+            {/* Dynamic Name + Price */}
+            <div className="package-name-volume">
+              <h4 className="body">{pkg?.packageName}</h4>
+              <p className="body-one">৳{pkg?.price}/month</p>
+            </div>
 
-          {/* Dynamic Speed */}
-          <h2 className="heading-h2">{pkg?.speedMbps} Mbps</h2>
+            {/* Dynamic Speed */}
+            <h2 className="heading-h2">{pkg?.speedMbps} Mbps</h2>
 
-          <button
-            className="button primary-fill-button"
-            onClick={() => openModal(pkg)}
-          >
-            GET RESIDENTIAL
-          </button>
+            <button
+              className="button primary-fill-button"
+              onClick={() => openModal(pkg)}
+            >
+              GET RESIDENTIAL
+            </button>
 
-          {/* Dynamic Features */}
-          <div className="package-points-deck">
-            {pkg?.items?.map((item) => (
-              <div className="package-point" key={item.id}>
-                <div className="package-point-bullet">
-                  <TickMarked />
+            {/* Dynamic Features */}
+            <div className="package-points-deck">
+              {pkg?.items?.map((item) => (
+                <div className="package-point" key={item.id}>
+                  <div className="package-point-bullet">
+                    <TickMarked />
+                  </div>
+                  <p className="subtitle">{item?.title}</p>
                 </div>
-                <p className="subtitle">{item?.title}</p>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
-        </div>
+        </ReactParallaxTilt>
       </div>
       {modalOpen && (
         <ConnectionModal

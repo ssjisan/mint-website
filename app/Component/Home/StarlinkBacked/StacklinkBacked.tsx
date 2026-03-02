@@ -55,26 +55,11 @@ export default function StacklinkBacked() {
         variants={fadeUpVariants}
       >
         <h4 className="starlink-backed-h3">
-          Always Connected{" "}
-          <span
-            className="animated-globe"
-            dangerouslySetInnerHTML={{
-              __html: `
-              <picture>
-                <source srcset="https://fonts.gstatic.com/s/e/notoemoji/latest/1f30f/512.webp" type="image/webp">
-                <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f30f/512.gif" alt="globe" width="28" height="28" style="display:inline-block; vertical-align:middle;" />
-              </picture>
-              `,
-            }}
-          />
-          <br />
-          Even When Others Go Down
+          Starlink-Backed Resilience
         </h4>
 
         <p className="starlink-backed-body">
-          All Mint internet packages are supported by Starlink-backed
-          connectivity, ensuring strong network stability, improved uptime, and
-          consistent performance across our network.
+          When terrestrial disruptions occur, Mint provides a true last line of defense.
         </p>
       </motion.div>
     </motion.section>

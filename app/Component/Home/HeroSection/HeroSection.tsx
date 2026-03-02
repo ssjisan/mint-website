@@ -3,6 +3,7 @@
 import { motion, Variants } from "framer-motion";
 import HeroSectionGradiant from "../../Assets/HeroSectionGradiant";
 import "./HeroSection.scss";
+import InternetUnderline from "../../Assets/InternetUnderline";
 
 export default function HeroSection() {
   /* ================= ANIMATION VARIANTS ================= */
@@ -40,7 +41,10 @@ export default function HeroSection() {
       >
         <div className="title-subtitle">
           <motion.h2 className="heading-h2" variants={item}>
-            Internet built on{" "}
+            <span className="internet-wrapper">
+              <span className="internet-text">Internet</span>
+              <InternetUnderline />
+            </span> built on{" "}
             <span className="extra-style-for-h2">25 years</span> of trust.
           </motion.h2>
 
