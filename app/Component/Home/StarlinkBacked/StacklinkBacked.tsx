@@ -34,6 +34,18 @@ export default function StacklinkBacked() {
       whileInView="visible"
       viewport={{ once: false, margin: "-120px" }}
     >
+      <motion.div
+        className="starlink-backed-content"
+        variants={fadeUpVariants}
+      >
+        <h4 className="starlink-backed-h3">
+          Starlink-Backed Resilience
+        </h4>
+
+        <p className="starlink-backed-body">
+          When terrestrial disruptions occur, Mint provides a true last line of defense.
+        </p>
+      </motion.div>
       {/* MAP PART (Reveals First) */}
       <motion.div className="map-svg-part" variants={fadeUpVariants}>
         <Image
@@ -50,18 +62,6 @@ export default function StacklinkBacked() {
       </motion.div>
 
       {/* CONTENT (Reveals Second) */}
-      <motion.div
-        className="starlink-backed-content"
-        variants={fadeUpVariants}
-      >
-        <h4 className="starlink-backed-h3">
-          Starlink-Backed Resilience
-        </h4>
-
-        <p className="starlink-backed-body">
-          When terrestrial disruptions occur, Mint provides a true last line of defense.
-        </p>
-      </motion.div>
     </motion.section>
   );
 }

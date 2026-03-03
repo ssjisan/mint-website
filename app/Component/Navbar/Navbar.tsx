@@ -53,16 +53,16 @@ export default function Navbar() {
           <Logo width={64} height={64} />
         </Link>
         <div className="nav-menu">
-          <Link className="nav-pill" href="#residential">
+          <Link className="nav-pill" href="/#residential">
             <p>Residential</p>
           </Link>
-          <Link className="nav-pill" href="#enterprise">
+          <Link className="nav-pill" href="/#enterprise">
             <p>Enterprise</p>
           </Link>
-          <Link className="nav-pill" href="#security">
+          <Link className="nav-pill" href="/#security">
             <p>Security</p>
           </Link>
-          <Link className="nav-pill" href="#stories">
+          <Link className="nav-pill" href="/#stories">
             <p>Success Stories</p>
           </Link>
         </div>

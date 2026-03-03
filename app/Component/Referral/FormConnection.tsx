@@ -198,7 +198,7 @@ export default function FormConnection() {
                     </div>
                 )}
 
-                <button className="submit-btn" onClick={handleSubmit}>
+                <button className="get-now-button" onClick={handleSubmit} style={{ width: "100%" }}>
                     Submit Request
                 </button>
             </div>

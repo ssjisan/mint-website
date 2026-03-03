@@ -29,6 +29,9 @@
   backdrop-filter: blur(10px);
   border-radius: 12px;
   padding: 4px 8px;
+  @media (max-width: 767px) {
+    display: none;
+  }
 }
 .nav-pill {
   position: relative;

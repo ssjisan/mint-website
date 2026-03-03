@@ -49,7 +49,7 @@ export default function FoucsPackage() {
           <div className="icon-body">
             <Image src="/wifi.png" alt="wifi" fill />
           </div>
-          <p className="heading-h6">RESIDENTIAL</p>
+          <p className="heading-h6">Residential</p>
         </div>
         <PricingPlan />
       </div>
