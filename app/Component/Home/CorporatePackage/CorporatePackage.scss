@@ -187,3 +187,35 @@
     background-position: 300% 50%;
   }
 }
+.custome-package-action {
+  padding-top: 80px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  .body-one {
+    width: 820px;
+    max-width: 100%;
+    text-align: center;
+  }
+  .divider-button {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 16px; // 16px gap from button to divider
+  }
+
+  .line {
+    flex: 1; // takes remaining space
+    height: 1px;
+    background: rgba(255, 255, 255, 0.15); // soft divider for dark UI
+  }
+
+  .button {
+    width: fit-content;
+    white-space: nowrap;
+  }
+}

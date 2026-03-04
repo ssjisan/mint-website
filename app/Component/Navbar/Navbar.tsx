@@ -50,16 +50,16 @@ export default function Navbar() {
         {/* Desktop Menu */}
         <div className="nav-menu">
           <Link className="nav-pill" href="/#residential">
-            <p>Residential</p>
+            Residential
           </Link>
           <Link className="nav-pill" href="/#enterprise">
-            <p>Enterprise</p>
+            Enterprise
           </Link>
           <Link className="nav-pill" href="/#security">
-            <p>Security</p>
+            Security
           </Link>
           <Link className="nav-pill" href="/#stories">
-            <p>Success Stories</p>
+            Success Stories
           </Link>
         </div>
 
@@ -85,16 +85,16 @@ export default function Navbar() {
       {/* Mobile Dropdown Menu */}
       {mobileMenuOpen && (
         <div className="mobile-menu">
-          <Link href="/#residential" onClick={() => setMobileMenuOpen(false)}>
+          <Link href="/#residential" onClick={() => setMobileMenuOpen(false)} className="nav-pill">
             Residential
           </Link>
-          <Link href="/#enterprise" onClick={() => setMobileMenuOpen(false)}>
+          <Link href="/#enterprise" onClick={() => setMobileMenuOpen(false)} className="nav-pill">
             Enterprise
           </Link>
-          <Link href="/#security" onClick={() => setMobileMenuOpen(false)}>
+          <Link href="/#security" onClick={() => setMobileMenuOpen(false)} className="nav-pill">
             Security
           </Link>
-          <Link href="/#stories" onClick={() => setMobileMenuOpen(false)}>
+          <Link href="/#stories" onClick={() => setMobileMenuOpen(false)} className="nav-pill">
             Success Stories
           </Link>
 

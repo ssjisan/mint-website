@@ -86,8 +86,7 @@ export default function ShopPage() {
                 <div className="row g-4" style={{ padding: '40px 0px' }}>
                     {Array.from({ length: 6 }).map((_, index) => (
                         <div
-                            className="col-12 col-sm-6 col-md-4 col-lg-2"
-                            key={index}
+                            className="col-12 col-sm-6 col-md-4 col-lg-3 col-xxl-2" key={index}
                         >
                             <div className="product-skeleton-card">
                                 <div className="skeleton image" />

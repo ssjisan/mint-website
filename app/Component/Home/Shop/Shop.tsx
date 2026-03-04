@@ -65,7 +65,7 @@ export default function Shop() {
     return (
         <div className="shop-container container">
             <div className="starlink-shop-header">
-                <h2>
+                <h2 className="heading-h3">
                     Official Starlink Kits in Bangladesh — Exclusive Deals from Mint
                 </h2>
             </div>
@@ -114,7 +114,7 @@ export default function Shop() {
             >
                 <Link
                     href="/shop"
-                    className="button get-mint-button"
+                    className="button secondary-outline-button"
                     style={{ width: "220px" }}
                 >
                     Explore Full Shop

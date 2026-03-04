@@ -42,7 +42,7 @@ export default function ProductCard({
             : text;
     };
 
-    const truncatedName = truncateText(product.name, 10);
+    const truncatedName = truncateText(product.name, 45);
     return (
         <Link href={`/product/${product.slug}`} className='product-card'>
             <div className='product-card-image'>

@@ -109,6 +109,13 @@ export default function CorporatePackage() {
             </div>
           );
         })}
+        <div className="custome-package-action">
+          <p className="body-one">Looking for a dedicated or custom solution?</p>
+          <div className="divider-button">
+            <span className="line"></span>
+            <button className="button inherit-fill-button">Talk to Sales</button>
+            <span className="line"></span>
+          </div>        </div>
       </div>
       {modalOpen && (
         <ConnectionModal

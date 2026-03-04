@@ -117,8 +117,8 @@ export default function MintDifference() {
 
             {/* Content */}
             <div className="difference-content">
-              <h6 className="heading-h6">Heritage of Trust</h6>
-              <p className="subtitle">
+              <h5 className="heading-h5">Heritage of Trust</h5>
+              <p className="body-one">
                 Built on 25 years of established industry experience.
               </p>
             </div>
@@ -142,8 +142,8 @@ export default function MintDifference() {
 
             {/* Content */}
             <div className="difference-content">
-              <h6 className="heading-h6">True Exclusivity</h6>
-              <p className="subtitle">
+              <h5 className="heading-h5">True Exclusivity</h5>
+              <p className="body-one">
                 Active only in Dhaka’s premier neighborhoods to ensure undivided
                 network quality.
               </p>
@@ -167,8 +167,8 @@ export default function MintDifference() {
 
             {/* Content */}
             <div className="difference-content">
-              <h6 className="heading-h6">Radical Simplicity</h6>
-              <p className="subtitle">
+              <h5 className="heading-h5">Radical Simplicity</h5>
+              <p className="body-one">
                 One powerful residential package. Just 100 Mbps. No confusion.
               </p>
             </div>
@@ -192,8 +192,8 @@ export default function MintDifference() {
 
             {/* Content */}
             <div className="difference-content">
-              <h6 className="heading-h6">Zero-Congestion Design</h6>
-              <p className="subtitle">
+              <h5 className="heading-h5">Zero-Congestion Design</h5>
+              <p className="body-one">
                 Peak hours don&apos;t exist here. Enjoy uninterrupted, dedicated bandwidth that never fluctuates, no matter who else is online.
               </p>
             </div>

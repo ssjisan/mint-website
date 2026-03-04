@@ -38,11 +38,11 @@ export default function StacklinkBacked() {
         className="starlink-backed-content"
         variants={fadeUpVariants}
       >
-        <h4 className="starlink-backed-h3">
+        <h4 className="heading-h3">
           Starlink-Backed Resilience
         </h4>
 
-        <p className="starlink-backed-body">
+        <p className="body-one">
           When terrestrial disruptions occur, Mint provides a true last line of defense.
         </p>
       </motion.div>

@@ -102,7 +102,7 @@ export default function SuccessStories() {
     <div className="container success-stories-container">
       <div className="success-stories-heading">
         <h4 className="success-stories-container-heading">Starlink Success Stories</h4>
-        <Link className="success-stories-view-all-button" href={`/success-stories`}>View All</Link>
+        <Link className="secondary-outline-button button" href={`/success-stories`}>View All</Link>
       </div>
       <div className="slider-wrapper">
         <motion.div

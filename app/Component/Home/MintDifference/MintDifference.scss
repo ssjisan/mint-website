@@ -55,11 +55,14 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  .heading-h6 {
+  align-items: flex-start;
+  gap: 12px;
+  h5 {
     text-align: left;
   }
-  .subtitle {
+  .body-one {
     text-align: left;
+    color: rgba(255, 255, 255, 0.8);
   }
 }
 .card-image-layer {

@@ -4,7 +4,7 @@
 .shop-page-header {
   position: relative;
   display: flex;
-  justify-content: center; /* centers the h4 by default */
+  justify-content: center;
   align-items: center;
   text-align: center;
   padding: 0 1rem;
@@ -21,6 +21,21 @@
 
   h4 {
     margin: 0;
+  }
+  @media (max-width: 767px) {
+    // flex-direction: column;
+    // gap: 16px;
+    justify-content: space-between;
+    button {
+      position: static; // 🔥 remove absolute on mobile
+    }
+    p {
+      display: none;
+    }
+  }
+  @media (max-width: 340px) {
+    flex-direction: column;
+    gap: 16px;
   }
 }
 .product-filter-button {

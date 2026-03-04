@@ -40,7 +40,7 @@ export default function HeroSection() {
         animate="visible"
       >
         <div className="title-subtitle">
-          <motion.h2 className="heading-h2" variants={item}>
+          <motion.h2 className="heading-h1" variants={item}>
             <span className="internet-wrapper">
               <span className="internet-text">Internet</span>
               <InternetUnderline />
@@ -48,7 +48,7 @@ export default function HeroSection() {
             <span className="extra-style-for-h2">25 years</span> of trust.
           </motion.h2>
 
-          <motion.p className="body-one hero-subtitle" variants={item}>
+          <motion.p className="body hero-subtitle" variants={item}>
             Experience premium speed in your exclusive neighborhood (Gulshan,
             Banani, Baridhara, Wari)
           </motion.p>

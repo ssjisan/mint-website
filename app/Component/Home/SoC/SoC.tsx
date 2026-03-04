@@ -8,7 +8,30 @@ import Shield from "../../Assets/Shield";
 import Alert from "../../Assets/Alert";
 import Investigation from "../../Assets/Investigation";
 import Dashboard from "../../Assets/Dashboard";
+import { motion } from "framer-motion";
 
+const containerVariants = {
+    hidden: {},
+    visible: {
+        transition: {
+            staggerChildren: 0.35, // delay between left & right
+        },
+    },
+};
+
+const columnVariants = {
+    hidden: {
+        opacity: 0,
+        y: 80,
+    },
+    visible: {
+        opacity: 1,
+        y: 0,
+        transition: {
+            duration: 0.9,
+        },
+    },
+};
 const socPoints = [
     {
         icon: Shield,
@@ -34,20 +57,27 @@ const socPoints = [
 
 export default function SoC() {
     return (
-        <section className="container soc-container">
-            <div className="row g-4 align-items-center">
+        <motion.section
+            className="container soc-container"
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: false, margin: "-120px" }}
+        >            <div className="row g-4 align-items-center">
                 {/* LEFT SIDE */}
-                <div className="col-12 col-md-6">
-                    <div className="soc-content">
+                <motion.div
+                    className="col-12 col-md-6"
+                    variants={columnVariants}
+                >                    <div className="soc-content">
                         <div className="soc-content-header">
                             <div className="soc-chip">
                                 <Radar />
                                 <p>SOC as Service (SOCaaS)</p>
                             </div>
-                            <h4>24×7×365 Managed Security Operations</h4>
+                            <h3 className="heading-h3">24×7×365 Managed Security Operations</h3>
                         </div>
 
-                        <p>
+                        <p className="body-one">
                             Powered by advanced XDR and SIEM platforms including Stellar
                             Cyber and Microsoft Sentinel, our SOC delivers continuous,
                             enterprise-grade monitoring and rapid incident response.
@@ -72,10 +102,13 @@ export default function SoC() {
                             </button>
                         </div>
                     </div>
-                </div>
+                </motion.div>
 
                 {/* RIGHT SIDE */}
-                <div className="col-12 col-md-6">
+                <motion.div
+                    className="col-12 col-md-6"
+                    variants={columnVariants}
+                >
                     <div className="soc-graphic-content position-relative">
                         <Image
                             src="/soc-vector.svg"
@@ -92,8 +125,8 @@ export default function SoC() {
                             className="soc-center-svg img-fluid"
                         />
                     </div>
-                </div>
+                </motion.div>
             </div>
-        </section>
+        </motion.section >
     );
 }
