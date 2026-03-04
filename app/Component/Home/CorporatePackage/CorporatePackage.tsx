@@ -64,7 +64,7 @@ export default function CorporatePackage() {
         </div>
       </div>
 
-      <div className="row g-4">
+      <div className="row g-4" style={{ justifyContent: "center" }}>
         {packages.map((pkg, index) => {
           const UI = corporateUI[index % corporateUI.length];
           const Glow = UI.Glow;

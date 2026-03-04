@@ -35,7 +35,14 @@ export default function ProductCard({
             : `৳${product.discount.value} OFF`
         : null;
 
+    const truncateText = (text: string, maxLength: number) => {
+        if (!text) return "";
+        return text.length > maxLength
+            ? text.slice(0, maxLength) + "..."
+            : text;
+    };
 
+    const truncatedName = truncateText(product.name, 10);
     return (
         <Link href={`/product/${product.slug}`} className='product-card'>
             <div className='product-card-image'>
@@ -53,7 +60,7 @@ export default function ProductCard({
 
             <div className='product-card-lower-part'>
                 <div className='product-card-info'>
-                    <h5>{product.name}</h5>
+                    <h5>{truncatedName}</h5>
                     {product.discount?.isActive ? (
                         <p>
                             ৳{finalPrice.toLocaleString()}

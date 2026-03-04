@@ -41,14 +41,15 @@
     top: 248px;
   }
   @media (max-width: 767px) {
-    top: 190px;
+    top: 240px;
   }
   @media (max-width: 575px) {
-    top: 170px;
+    top: 212px;
+    width: 75%;
   }
   @media (max-width: 450px) {
     width: 90%;
-    top: 164px;
+    top: 212px;
   }
 }
 .focus-package-card {
@@ -66,6 +67,10 @@
   display: flex;
   flex-direction: column;
   gap: 32px;
+  @media (max-width: 991px) {
+    width: 400px;
+    padding: 20px;
+  }
   @media (max-width: 575px) {
     width: 100%;
     padding: 20px;
