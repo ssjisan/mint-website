@@ -12,55 +12,29 @@ export default function Shop() {
     const [products, setProducts] = useState<Product[]>([]);
     const [loading, setLoading] = useState(true);
     const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
-    const [starlinkBrandId, setStarlinkBrandId] = useState<string | null>(null);
 
-    // Fetch brands first
+    // ✅ Fetch Featured Products
     useEffect(() => {
-        const fetchBrands = async () => {
-            try {
-                const brandRes = await axios.get("/brands");
-
-                const starlinkBrand = brandRes.data.find(
-                    (brand) =>
-                        brand.name.toLowerCase() === "starlink"
-                );
-
-                if (starlinkBrand) {
-                    setStarlinkBrandId(starlinkBrand._id);
-                }
-            } catch (error) {
-                console.error("Brand fetch error:", error);
-            }
-        };
-
-        fetchBrands();
-    }, []);
-
-    // Fetch products after brand ID is available
-    useEffect(() => {
-        if (!starlinkBrandId) return;
-
-        const fetchProducts = async () => {
+        const fetchFeaturedProducts = async () => {
             try {
                 setLoading(true);
 
-                const res = await axios.get("/all-products", {
+                const res = await axios.get("/featured-products", {
                     params: {
-                        isPublished: true,
-                        brand: starlinkBrandId,
+                        limit: 8, // optional
                     },
                 });
 
-                setProducts(res.data.products || res.data);
+                setProducts(res.data.products || []);
             } catch (error) {
-                console.error("Error loading products:", error);
+                console.error("Error loading featured products:", error);
             } finally {
                 setLoading(false);
             }
         };
 
-        fetchProducts();
-    }, [starlinkBrandId]);
+        fetchFeaturedProducts();
+    }, []);
 
     return (
         <div className="shop-container container">
