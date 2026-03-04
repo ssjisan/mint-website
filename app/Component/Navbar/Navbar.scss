@@ -140,3 +140,10 @@
     display: none;
   }
 }
+.nav-pill.active {
+  color: #2fbf9b;
+
+  &::after {
+    transform: scaleX(1);
+  }
+}

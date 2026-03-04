@@ -14,6 +14,7 @@ import "./CorporatePackage.scss";
 import { Package } from "@/app/lib/types/package";
 import axios from "../../../lib/axios";
 import ConnectionModal from "../ConnectionModal/ConnectionModal";
+import CustomeSupportModal from "../../CustomeSupportModal/CustomeSupportModal";
 const corporateUI = [
   {
     Glow: GlowingStarCorporateOne,
@@ -31,6 +32,7 @@ const corporateUI = [
 
 export default function CorporatePackage() {
   const [packages, setPackages] = useState<Package[]>([]);
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
     axios.get("/packages/corporate").then((res) => {
@@ -113,7 +115,7 @@ export default function CorporatePackage() {
           <p className="body-one">Looking for a dedicated or custom solution?</p>
           <div className="divider-button">
             <span className="line"></span>
-            <button className="button inherit-fill-button">Talk to Sales</button>
+            <button className="button inherit-fill-button" onClick={() => setOpen(true)}>Talk to Sales</button>
             <span className="line"></span>
           </div>        </div>
       </div>
@@ -121,6 +123,12 @@ export default function CorporatePackage() {
         <ConnectionModal
           selectedPackage={selectedPackage}
           onClose={() => setModalOpen(false)}
+        />
+      )}
+      {open && (
+        <CustomeSupportModal
+          onClose={() => setOpen(false)}
+          defaultServiceName="Customized Internet"
         />
       )}
     </div>

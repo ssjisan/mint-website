@@ -9,6 +9,8 @@ import Alert from "../../Assets/Alert";
 import Investigation from "../../Assets/Investigation";
 import Dashboard from "../../Assets/Dashboard";
 import { motion } from "framer-motion";
+import { useState } from "react";
+import CustomeSupportModal from "../../CustomeSupportModal/CustomeSupportModal";
 
 const containerVariants = {
     hidden: {},
@@ -56,6 +58,7 @@ const socPoints = [
 ];
 
 export default function SoC() {
+    const [open, setOpen] = useState(false);
     return (
         <motion.section
             className="container soc-container"
@@ -97,7 +100,7 @@ export default function SoC() {
                         </div>
 
                         <div className="button-deck-soc">
-                            <button className="button primary-fill-button">
+                            <button className="button primary-fill-button" onClick={() => setOpen(true)}>
                                 Request for Demo
                             </button>
                         </div>
@@ -127,6 +130,12 @@ export default function SoC() {
                     </div>
                 </motion.div>
             </div>
+            {open && (
+                <CustomeSupportModal
+                    onClose={() => setOpen(false)}
+                    defaultServiceName="SOC as Service (SOCaaS)"
+                />
+            )}
         </motion.section >
     );
 }

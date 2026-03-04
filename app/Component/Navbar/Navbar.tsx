@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import Logo from "../Assets/Logo";
 import { Package } from "@/app/lib/types/package";
@@ -15,6 +15,42 @@ export default function Navbar() {
   const [selectedPackage, setSelectedPackage] = useState<Package | null>(null);
   const [packages, setPackages] = useState<Package[]>([]);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState<string>("");
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = ["residential", "enterprise", "security", "stories"];
+
+      const scrollPosition = window.scrollY + 120;
+
+      let foundSection = "";
+
+      for (const id of sections) {
+        const element = document.getElementById(id);
+        if (!element) continue;
+
+        const offsetTop = element.offsetTop;
+        const offsetHeight = element.offsetHeight;
+
+        if (
+          scrollPosition >= offsetTop &&
+          scrollPosition < offsetTop + offsetHeight
+        ) {
+          foundSection = id;
+          break;
+        }
+      }
+
+      // 🔥 If no section found → clear active state
+      setActiveSection(foundSection);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    handleScroll();
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
 
   const fetchPackages = async () => {
     try {
@@ -49,16 +85,17 @@ export default function Navbar() {
 
         {/* Desktop Menu */}
         <div className="nav-menu">
-          <Link className="nav-pill" href="/#residential">
+          <Link className={`nav-pill ${activeSection === "residential" ? "active" : ""}`}
+            href="/#residential">
             Residential
           </Link>
-          <Link className="nav-pill" href="/#enterprise">
+          <Link className={`nav-pill ${activeSection === "enterprise" ? "active" : ""}`} href="/#enterprise">
             Enterprise
           </Link>
-          <Link className="nav-pill" href="/#security">
+          <Link className={`nav-pill ${activeSection === "security" ? "active" : ""}`} href="/#security">
             Security
           </Link>
-          <Link className="nav-pill" href="/#stories">
+          <Link className={`nav-pill ${activeSection === "stories" ? "active" : ""}`} href="/#stories">
             Success Stories
           </Link>
         </div>
@@ -85,16 +122,16 @@ export default function Navbar() {
       {/* Mobile Dropdown Menu */}
       {mobileMenuOpen && (
         <div className="mobile-menu">
-          <Link href="/#residential" onClick={() => setMobileMenuOpen(false)} className="nav-pill">
+          <Link href="/#residential" onClick={() => setMobileMenuOpen(false)} className={`nav-pill ${activeSection === "residential" ? "active" : ""}`}>
             Residential
           </Link>
-          <Link href="/#enterprise" onClick={() => setMobileMenuOpen(false)} className="nav-pill">
+          <Link href="/#enterprise" onClick={() => setMobileMenuOpen(false)} className={`nav-pill ${activeSection === "enterprise" ? "active" : ""}`}>
             Enterprise
           </Link>
-          <Link href="/#security" onClick={() => setMobileMenuOpen(false)} className="nav-pill">
+          <Link href="/#security" onClick={() => setMobileMenuOpen(false)} className={`nav-pill ${activeSection === "security" ? "active" : ""}`}>
             Security
           </Link>
-          <Link href="/#stories" onClick={() => setMobileMenuOpen(false)} className="nav-pill">
+          <Link href="/#stories" onClick={() => setMobileMenuOpen(false)} className={`nav-pill ${activeSection === "stories" ? "active" : ""}`}>
             Success Stories
           </Link>
 
