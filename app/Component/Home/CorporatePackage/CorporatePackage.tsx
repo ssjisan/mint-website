@@ -112,7 +112,7 @@ export default function CorporatePackage() {
           );
         })}
         <div className="custome-package-action">
-          <p className="body-one">Looking for a dedicated or custom solution?</p>
+          <p className="body-one">Seeking a solution built specifically for your business?</p>
           <div className="divider-button">
             <span className="line"></span>
             <button className="button inherit-fill-button" onClick={() => setOpen(true)}>Talk to Sales</button>

@@ -42,6 +42,7 @@ export default function FormConnection() {
     const [captchaAnswer, setCaptchaAnswer] = useState("");
     const [packages, setPackages] = useState<Package[]>([]);
     const [selectedPkg, setSelectedPkg] = useState<Package | null>(null);
+    const [packageType, setPackageType] = useState<"residential" | "corporate">("residential");
     const router = useRouter();
     useEffect(() => {
         const fetchCaptcha = async () => {
@@ -122,85 +123,112 @@ export default function FormConnection() {
             }
         }
     };
-
+    const filteredPackages = packages.filter((p) => p.type === packageType);
     return (
         <div className="form-connection-wrapper">
             <div className="form-connection-card">
-                <h3>Connection Request</h3>
+                <h3 className="heading-h3">Connection Request</h3>
+                <div className="request-form-body" style={{ padding: "48px 0px" }}>
+                    <div className="form-group">
+                        <label>Connection Type*</label>
 
-                {/* Package Selector */}
-                <div className="form-group">
-                    <label>Select Package*</label>
-                    <select
-                        value={selectedPkg?._id || ""}
-                        onChange={(e) =>
-                            setSelectedPkg(
-                                packages.find((p) => p._id === e.target.value) || null
-                            )
-                        }
-                    >
-                        <option value="" disabled>
-                            -- Select a Package --
-                        </option>
+                        <div className="connection-type-deck">
+                            <div
+                                className={`connection-type ${packageType === "residential" ? "active-connection-type" : ""
+                                    }`}
+                                onClick={() => {
+                                    setPackageType("residential");
+                                    setSelectedPkg(null);
+                                }}
+                            >
+                                Residential
+                            </div>
 
-                        {packages.map((pkg) => (
-                            <option key={pkg._id} value={pkg._id}>
-                                {pkg.packageName} ({pkg.speedMbps} Mbps) - BDT{" "}
-                                {pkg.price.toLocaleString()}
+                            <div
+                                className={`connection-type ${packageType === "corporate" ? "active-connection-type" : ""
+                                    }`}
+                                onClick={() => {
+                                    setPackageType("corporate");
+                                    setSelectedPkg(null);
+                                }}
+                            >
+                                Corporate
+                            </div>
+                        </div>
+                    </div>
+                    <div className="form-group">
+                        <label>Select Package*</label>
+                        <select
+                            value={selectedPkg?._id || ""}
+                            onChange={(e) =>
+                                setSelectedPkg(
+                                    filteredPackages.find((p) => p._id === e.target.value) || null
+                                )
+                            }
+                        >
+                            <option value="" disabled>
+                                -- Select a Package --
                             </option>
-                        ))}
-                    </select>
-                </div>
 
-                <div className="form-grid">
-                    <div className="form-group">
-                        <label>Name*</label>
-                        <input value={name} onChange={(e) => setName(e.target.value)} />
+                            {filteredPackages.map((pkg) => (
+                                <option key={pkg._id} value={pkg._id}>
+                                    {pkg.packageName} ({pkg.speedMbps} Mbps) - BDT{" "}
+                                    {pkg.price.toLocaleString()}
+                                </option>
+                            ))}
+                        </select>
                     </div>
 
-                    <div className="form-group">
-                        <label>Phone*</label>
-                        <input value={phone} onChange={(e) => setPhone(e.target.value)} />
-                    </div>
-
-                    <div className="form-group">
-                        <label>Email*</label>
-                        <input value={email} onChange={(e) => setEmail(e.target.value)} />
-                    </div>
-
-                    <div className="form-group">
-                        <label>Address*</label>
-                        <input
-                            value={address}
-                            onChange={(e) => setAddress(e.target.value)}
-                        />
-                    </div>
-
-                    {selectedPkg?.type === "corporate" && (
+                    <div className="form-grid">
                         <div className="form-group">
-                            <label>Company Name*</label>
+                            <label>Name*</label>
+                            <input value={name} onChange={(e) => setName(e.target.value)} />
+                        </div>
+
+                        <div className="form-group">
+                            <label>Phone*</label>
+                            <input value={phone} onChange={(e) => setPhone(e.target.value)} />
+                        </div>
+
+                        <div className="form-group">
+                            <label>Email*</label>
+                            <input value={email} onChange={(e) => setEmail(e.target.value)} />
+                        </div>
+
+                        <div className="form-group">
+                            <label>Address*</label>
                             <input
-                                value={companyName}
-                                onChange={(e) => setCompanyName(e.target.value)}
+                                value={address}
+                                onChange={(e) => setAddress(e.target.value)}
+                            />
+                        </div>
+
+                        {selectedPkg?.type === "corporate" && (
+                            <div className="form-group">
+                                <label>Company Name*</label>
+                                <input
+                                    value={companyName}
+                                    onChange={(e) => setCompanyName(e.target.value)}
+                                />
+                            </div>
+                        )}
+                    </div>
+
+                    {captcha && (
+                        <div className="form-group">
+                            <label>{captcha.question}</label>
+                            <input
+                                value={captchaAnswer}
+                                onChange={(e) => setCaptchaAnswer(e.target.value)}
+                                placeholder="Answer"
                             />
                         </div>
                     )}
+
+                    <button className="get-now-button" onClick={handleSubmit} style={{ width: "100%" }}>
+                        Submit Request
+                    </button>
                 </div>
-
-                {captcha && (
-                    <div className="form-group">
-                        <label>{captcha.question}</label>
-                        <input
-                            value={captchaAnswer}
-                            onChange={(e) => setCaptchaAnswer(e.target.value)}
-                            placeholder="Answer"
-                        />
-                    </div>
-                )}
-
-                <button className="get-now-button" onClick={handleSubmit} style={{ width: "100%" }}>
-                    Submit Request
-                </button>
             </div>
         </div>
     );

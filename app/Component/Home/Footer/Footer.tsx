@@ -8,7 +8,8 @@ export default function Footer() {
         display: "flex",
         justifyContent: "space-between",
         alignItems: "center",
-        padding: "16px 0px",
+        padding: "16px 16px",
+        textAlign: "center",
         flexWrap: "wrap",
         gap: "10px",
       }}

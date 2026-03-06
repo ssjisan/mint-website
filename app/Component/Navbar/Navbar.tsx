@@ -85,19 +85,19 @@ export default function Navbar() {
 
         {/* Desktop Menu */}
         <div className="nav-menu">
-          <Link className={`nav-pill ${activeSection === "residential" ? "active" : ""}`}
+          <a className={`nav-pill ${activeSection === "residential" ? "active" : ""}`}
             href="/#residential">
             Residential
-          </Link>
-          <Link className={`nav-pill ${activeSection === "enterprise" ? "active" : ""}`} href="/#enterprise">
+          </a>
+          <a className={`nav-pill ${activeSection === "enterprise" ? "active" : ""}`} href="/#enterprise">
             Enterprise
-          </Link>
-          <Link className={`nav-pill ${activeSection === "security" ? "active" : ""}`} href="/#security">
+          </a>
+          <a className={`nav-pill ${activeSection === "security" ? "active" : ""}`} href="/#security">
             Security
-          </Link>
-          <Link className={`nav-pill ${activeSection === "stories" ? "active" : ""}`} href="/#stories">
+          </a>
+          <a className={`nav-pill ${activeSection === "stories" ? "active" : ""}`} href="/#stories">
             Success Stories
-          </Link>
+          </a>
         </div>
 
         {/* Desktop Button */}

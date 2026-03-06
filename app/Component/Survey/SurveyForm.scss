@@ -1,0 +1,66 @@
+.survey-form-container {
+  padding: 64px 24px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 12px;
+}
+.survey-form {
+  width: 640px;
+  max-width: 100%;
+  padding: 24px;
+  border-radius: 16px;
+  border: 1px solid var(--secondary-500);
+}
+.survey-footer {
+  width: 640px;
+  max-width: 100%;
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+  justify-content: flex-end;
+}
+.form-content-header {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding-bottom: 24px;
+}
+.survey-content {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.survey-yes-no-deck {
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+  cursor: pointer;
+}
+.survey-yes-no {
+  padding: 4px 12px;
+  border: 1px solid var(--secondary-500);
+  border-radius: 8px;
+}
+.survey-yes-no-active {
+  background-color: var(--secondary-500);
+  color: #fff;
+}
+.question-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.survey-navbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 8px 24px;
+  z-index: 100;
+  @media (max-width: 767px) {
+    padding: 8px 16px;
+  }
+}

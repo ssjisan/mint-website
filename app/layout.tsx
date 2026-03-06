@@ -51,9 +51,7 @@ export default function RootLayout({
       <body className={`${manrope.variable}`}>
         <Toaster />
         <ChatBot />
-        <Navbar />
         {children}
-        <Footer />
       </body>
     </html>
   );

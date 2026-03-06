@@ -15,12 +15,11 @@ export default function ReferralHeroSection() {
                     <div className='referral-content'>
                         <TwentyFiveYears />
                         <h2>
-                            Built on{" "}
+                            Built for {" "}
                             <span className="twentyfive-wrapper">
-                                <span className="twentyfive-text">25 Years</span>
+                                <span className="twentyfive-text">Exceptionals.</span>
                                 <InternetUnderline />
                             </span>{" "}
-                            of Internet Experience.
                         </h2>
                         <button className='get-now-button' onClick={() => {
                             const section = document.getElementById("referral-form");
