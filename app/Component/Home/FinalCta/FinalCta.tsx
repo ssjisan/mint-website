@@ -129,7 +129,21 @@ export default function FinalCta() {
         <button className="button primary-fill-button" onClick={openModal}>
           Get Mint
         </button>
-
+        <div className="referal-link-section">
+          <div className="referral-divider">
+            <span className="divider-line" />
+            <p>or</p>
+            <span className="divider-line" />
+          </div>
+          <p className="subtitle">
+            Want to refer Mint to someone?</p>
+          <button onClick={() => {
+            const referralLink = `https://www.mint.com.bd/referral`;
+            navigator.clipboard.writeText(referralLink);
+            toast.success("Referral link copied!");
+          }}
+            className="button primary-outline-button">Copy Referral link</button>
+        </div>
         {/* Contact */}
         <div className="final-cta-contact-deck">
           <div className="final-cta-contact-email">

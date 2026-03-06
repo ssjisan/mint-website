@@ -94,3 +94,27 @@
   width: 24px;
   height: 24px;
 }
+.referal-link-section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.referral-divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  justify-content: center;
+}
+
+.divider-line {
+  height: 1px;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.2); // sharp white
+}
+
+.referral-message {
+  font-size: 14px;
+  opacity: 0.9;
+  text-align: center;
+}
