@@ -147,7 +147,7 @@ export default function ConnectionModal({
           >
             {packages?.map((pkg) => (
               <option key={pkg._id} value={pkg._id}>
-                {pkg.packageName} - BDT {pkg.price.toLocaleString()}
+                {pkg.type === "corporate" ? "Corporate" : "Residential"} - {pkg.packageName} - BDT {pkg.price.toLocaleString()}
               </option>
             ))}
           </select>
