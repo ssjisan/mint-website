@@ -9,6 +9,7 @@ import toast from "react-hot-toast";
 import "./Navbar.scss";
 import ConnectionModal from "../Home/ConnectionModal/ConnectionModal";
 import Link from "next/link";
+import { usePathname } from "next/navigation"; // Next.js hook
 
 export default function Navbar() {
   const [modalOpen, setModalOpen] = useState(false);
@@ -16,7 +17,13 @@ export default function Navbar() {
   const [packages, setPackages] = useState<Package[]>([]);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState<string>("");
-
+  const pathname = usePathname();
+  const handleLogoClick = (e: React.MouseEvent) => {
+    if (pathname === "/") {
+      e.preventDefault(); // prevent navigation
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  };
   useEffect(() => {
     const handleScroll = () => {
       const sections = ["residential", "enterprise", "security", "stories"];
@@ -79,7 +86,7 @@ export default function Navbar() {
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
       >
-        <Link href="/" className="logo">
+        <Link href="/" className="logo" onClick={handleLogoClick}>
           <Logo width={64} height={64} />
         </Link>
 
