@@ -1,19 +1,10 @@
+import "./Footer.scss"
 export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
     <div
-      className="container"
-      style={{
-        display: "flex",
-        justifyContent: "space-between",
-        alignItems: "center",
-        padding: "16px 16px",
-        textAlign: "center",
-        flexWrap: "wrap",
-        gap: "10px",
-      }}
-    >
+      className="container footer-container" >
       {/* Left Side */}
       <p className="label">
         © {currentYear}.  A Brand of{" "}<a

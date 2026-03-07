@@ -31,7 +31,7 @@ export default function HeroSection() {
   };
 
   return (
-    <div className="container hero-container">
+    <div className="container hero-container"  >
       {/* ================= CONTENT ================= */}
       <motion.div
         className="hero-section-content"

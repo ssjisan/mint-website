@@ -1,0 +1,12 @@
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 16px;
+  text-align: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  @media (max-width: 575px) {
+    justify-content: center;
+  }
+}

@@ -42,7 +42,7 @@ export default function FoucsPackage() {
   if (!pkg) return null;
 
   return (
-    <div className="foucs-package-container container">
+    <div className="foucs-package-container container" >
       {/* ---------------- Header ---------------- */}
       <div className="title-for-focus-package">
         <div className="title-body">

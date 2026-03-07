@@ -56,7 +56,7 @@ export default function CorporatePackage() {
   };
 
   return (
-    <div className="corporate-package-container container">
+    <div className="corporate-package-container container"  >
       <div className="title-for-corporate-package">
         <div className="title-body">
           <div className="icon-body">

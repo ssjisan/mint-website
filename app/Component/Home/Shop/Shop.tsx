@@ -37,7 +37,7 @@ export default function Shop() {
     }, []);
 
     return (
-        <div className="shop-container container">
+        <div className="shop-container container"  >
             <div className="starlink-shop-header">
                 <h2 className="heading-h3">
                     Official Starlink Kits in Bangladesh — Exclusive Deals from Mint

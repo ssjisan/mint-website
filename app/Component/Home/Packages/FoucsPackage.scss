@@ -1,11 +1,11 @@
 .foucs-package-container {
-  padding: 120px 0 500px;
+  padding: 64px 0 500px;
   position: relative;
   @media (max-width: 767px) {
-    padding: 80px 24px 560px;
+    padding: 40px 24px 480px;
   }
   @media (max-width: 575px) {
-    padding: 80px 16px 500px;
+    padding: 40px 24px 560px;
   }
 }
 .title-body {
@@ -34,22 +34,25 @@
 }
 .focus-package-card-container {
   position: absolute;
-  top: 290px;
+  top: 248px;
   left: 50%;
   transform: translateX(-50%);
+  @media (max-width: 1199px) {
+    top: 232px;
+  }
   @media (max-width: 991px) {
-    top: 248px;
+    top: 200px;
   }
   @media (max-width: 767px) {
-    top: 240px;
+    top: 160px;
   }
   @media (max-width: 575px) {
-    top: 212px;
+    top: 140px;
     width: 75%;
   }
   @media (max-width: 450px) {
     width: 90%;
-    top: 212px;
+    top: 132px;
   }
 }
 .focus-package-card {
@@ -69,11 +72,9 @@
   gap: 32px;
   @media (max-width: 991px) {
     width: 400px;
-    padding: 20px;
   }
   @media (max-width: 575px) {
     width: 100%;
-    padding: 20px;
   }
 }
 .glow-wrapper {

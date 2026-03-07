@@ -57,7 +57,12 @@ export default function StacklinkBacked() {
         />
 
         <div className="map-radar">
-          <MapRader />
+          <Image
+            src="/radar.svg"
+            alt="Radar"
+            fill
+            className="radar-img"
+          />
         </div>
       </motion.div>
 

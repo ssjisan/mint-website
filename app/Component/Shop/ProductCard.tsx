@@ -4,6 +4,7 @@ import Image from 'next/image';
 import './ProductCard.scss';
 import { Product } from "../../lib/types/products";
 import Link from 'next/link';
+import ContentRenderer from '@/app/lib/html2text';
 
 interface ProductCardProps {
     product: Product;
@@ -16,6 +17,7 @@ export default function ProductCard({
 }: ProductCardProps) {
 
     let finalPrice = product.price;
+    console.log(product);
 
     if (product.discount?.isActive) {
         if (product.discount.type === 'percentage') {
@@ -61,6 +63,9 @@ export default function ProductCard({
             <div className='product-card-lower-part'>
                 <div className='product-card-info'>
                     <h5>{truncatedName}</h5>
+                    {product?.shortDescriptionHTML?.trim() && (
+                        <ContentRenderer html={product.shortDescriptionHTML} />
+                    )}
                     {product.discount?.isActive ? (
                         <p>
                             ৳{finalPrice.toLocaleString()}

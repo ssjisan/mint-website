@@ -1,8 +1,9 @@
 "use client";
 
-import { useRef } from "react";
+import { useMemo, useRef } from "react";
 import { Specifications } from "../../../lib/types/products";
 import "./ProductDescription.scss"
+import ContentRenderer from "@/app/lib/html2text";
 
 interface ProductDescriptionProps {
     descriptionHTML?: string;
@@ -24,7 +25,13 @@ export default function ProductDescription({
         const scrollToDesc = () => {
             descRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
         };
-
+        const hasValidSpecifications = useMemo(() => {
+            return (
+                specifications?.some(
+                    (group) => group.items && group.items.length > 0
+                ) ?? false
+            );
+        }, [specifications]);
         return (
             <div className="mt-5">
 
@@ -39,7 +46,7 @@ export default function ProductDescription({
                 </div>
 
                 {/* ================= SPECIFICATION ================= */}
-                <div
+                {hasValidSpecifications && <div
                     ref={specRef}
                     className="p-4  rounded description-container"
                     style={{ scrollMarginTop: "100px" }}
@@ -79,20 +86,17 @@ export default function ProductDescription({
                             ))}
                         </div>
                     ))}
-                </div>
+                </div>}
 
                 {/* ================= DESCRIPTION ================= */}
-                <div
+                {descriptionHTML && <div
                     ref={descRef}
                     className="p-4  rounded mt-4 description-container"
                     style={{ scrollMarginTop: "100px" }}
                 >
                     <h5 className="mb-4">Description</h5>
-
-                    {descriptionHTML && (
-                        <div dangerouslySetInnerHTML={{ __html: descriptionHTML }} />
-                    )}
-                </div>
+                    <ContentRenderer html={descriptionHTML} />
+                </div>}
             </div>
         );
     }

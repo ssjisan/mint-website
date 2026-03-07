@@ -99,7 +99,7 @@ export default function SuccessStories() {
   if (!stories.length) return null;
 
   return (
-    <div className="container success-stories-container">
+    <div className="container success-stories-container"  >
       <div className="success-stories-heading">
         <h4 className="success-stories-container-heading">Starlink Success Stories</h4>
         <Link className="secondary-outline-button button" href={`/success-stories`}>View All</Link>
