@@ -11,6 +11,7 @@ import toast from "react-hot-toast";
 import "./FoucsPackage.scss";
 import { Package } from "@/app/lib/types/package";
 import ConnectionModal from "../ConnectionModal/ConnectionModal";
+import ResidentialIcon from "../../Assets/ResidentialIcon";
 
 export default function FoucsPackage() {
   const [pkg, setPkg] = useState<Package | null>(null);
@@ -47,7 +48,7 @@ export default function FoucsPackage() {
       <div className="title-for-focus-package">
         <div className="title-body">
           <div className="icon-body">
-            <Image src="/wifi.png" alt="wifi" fill />
+            <ResidentialIcon />
           </div>
           <p className="heading-h6">Residential</p>
         </div>

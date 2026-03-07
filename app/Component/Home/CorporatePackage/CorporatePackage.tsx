@@ -15,6 +15,7 @@ import { Package } from "@/app/lib/types/package";
 import axios from "../../../lib/axios";
 import ConnectionModal from "../ConnectionModal/ConnectionModal";
 import CustomeSupportModal from "../../CustomeSupportModal/CustomeSupportModal";
+import EnterpriseIcon from "../../Assets/EnterpriseIcon";
 const corporateUI = [
   {
     Glow: GlowingStarCorporateOne,
@@ -60,7 +61,7 @@ export default function CorporatePackage() {
       <div className="title-for-corporate-package">
         <div className="title-body">
           <div className="icon-body">
-            <Image src="/flash.png" alt="enterprise" fill />
+            <EnterpriseIcon />
           </div>
           <p className="heading-h6">Enterprise</p>
         </div>

@@ -74,7 +74,6 @@ export default function SoC() {
                 >                    <div className="soc-content">
                         <div className="soc-content-header">
                             <div className="soc-chip">
-                                <Radar />
                                 <p>SOC as Service (SOCaaS)</p>
                             </div>
                             <h3 className="heading-h3">24×7×365 Managed Security Operations</h3>
