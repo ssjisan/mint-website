@@ -4,7 +4,6 @@ import Image from 'next/image';
 import './ProductCard.scss';
 import { Product } from "../../lib/types/products";
 import Link from 'next/link';
-import ContentRenderer from '@/app/lib/html2text';
 
 interface ProductCardProps {
     product: Product;
@@ -61,32 +60,48 @@ export default function ProductCard({
             </div>
 
             <div className='product-card-lower-part'>
+
+                {/* NAME + HIGHLIGHTS */}
                 <div className='product-card-info'>
-                    <h5>{truncatedName}</h5>
-                    {product?.shortDescriptionHTML?.trim() && (
-                        <ContentRenderer html={product.shortDescriptionHTML} />
-                    )}
-                    {product.discount?.isActive ? (
-                        <p>
-                            ৳{finalPrice.toLocaleString()}
-                            <span className='original-price'>৳{product.price.toLocaleString()}</span>
-                        </p>
-                    ) : (
-                        <p>৳{product.price.toLocaleString()}</p>
-                    )}
+                    <p className='body product-name'>{truncatedName}</p>
+
+                    <ul className="product-highlights">
+                        {product.highlights?.slice(0, 3).map((highlight, index) => (
+                            <li key={index}>{highlight}</li>
+                        ))}
+                    </ul>
                 </div>
 
-                <div className='pre-order-button'>
-                    <button
-                        className='button primary-fill-button'
-                        onClick={(e) => {
-                            e.preventDefault();
-                            onPreOrderClick();
-                        }}
-                    >
-                        Pre-order
-                    </button>
+                {/* PRICE + BUTTON */}
+                <div className='product-card-action'>
+                    <div className='price-divider'></div>
+
+                    <div className='price-row'>
+                        {product.discount?.isActive ? (
+                            <p>
+                                ৳{finalPrice.toLocaleString()}
+                                <span className='original-price'>
+                                    ৳{product.price.toLocaleString()}
+                                </span>
+                            </p>
+                        ) : (
+                            <p>৳{product.price.toLocaleString()}</p>
+                        )}
+                    </div>
+
+                    <div className='pre-order-button'>
+                        <button
+                            className='button primary-fill-button'
+                            onClick={(e) => {
+                                e.preventDefault();
+                                onPreOrderClick();
+                            }}
+                        >
+                            Pre-order
+                        </button>
+                    </div>
                 </div>
+
             </div>
         </Link>
     );

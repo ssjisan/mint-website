@@ -46,7 +46,7 @@ export interface Product {
 
     productCode?: string;
     showPrice?: boolean;
-
+    highlights?: string[];
     discount?: Discount;
 }
 

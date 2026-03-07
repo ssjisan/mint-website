@@ -36,7 +36,7 @@ export default function ProductBasic({
 }: ProductBasicProps) {
     return (
         <div>
-            <h2 className="product-name">{name}</h2>
+            <h2 className="headinh-h2">{name}</h2>
             <div className="info-deck">
                 {brand?.name && (
                     <div className="info-deck-badge">

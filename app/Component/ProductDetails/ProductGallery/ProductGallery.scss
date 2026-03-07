@@ -7,10 +7,13 @@
     width: 100%;
     border-radius: 16px;
     overflow: hidden;
-    background: #f8f9fa;
+    background: #ffffff;
 
     img {
-      object-fit: cover;
+      object-fit: contain;
+    }
+    @media (max-width: 575px) {
+      height: 320px;
     }
   }
 

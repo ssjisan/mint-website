@@ -38,23 +38,46 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    flex-grow: 1; // make lower part take remaining height
+    flex-grow: 1;
   }
 
   .product-card-info {
-    // Fix max height for name so all prices align
-    h5 {
-      font-size: 16px;
-      margin: 0 0 8px 0;
-      line-height: 1.2em;
+    display: flex;
+    flex-direction: column;
+
+    .product-name {
       display: -webkit-box;
-      -webkit-line-clamp: 3; // limit to 3 lines
+      -webkit-line-clamp: 2;
       -webkit-box-orient: vertical;
       overflow: hidden;
-      text-overflow: ellipsis;
-      min-height: calc(1.2em * 3 + 8px); // reserve space for 3 lines
+      min-height: calc(1.2em * 2 + 8px);
     }
+  }
 
+  .product-highlights {
+    font-size: 13px;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    li:empty {
+      list-style-type: none;
+    }
+  }
+
+  .product-card-action {
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .price-divider {
+    height: 1px;
+    background: #444;
+    margin: 12px 0;
+  }
+
+  .price-row {
     p {
       margin: 0;
       font-size: 18px;
@@ -70,8 +93,8 @@
   }
 
   .pre-order-button {
-    margin-top: auto;
-    padding-top: 16px;
+    margin-top: 12px;
+
     .button {
       width: 100%;
     }

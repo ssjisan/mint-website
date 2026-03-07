@@ -82,12 +82,12 @@ export default function ProductDetails() {
         <div className="container product-details-container">
             <div className="row g-4">
                 {/* LEFT - GALLERY */}
-                <div className="col-12 col-md-5">
+                <div className="col-12 col-md-6 col-lg-5">
                     <ProductGallery images={sortedImages} />
                 </div>
 
                 {/* RIGHT - BASIC INFO */}
-                <div className="col-12 col-md-7">
+                <div className="col-12 col-md-6 col-lg-7">
                     <ProductBasic
                         name={product.name}
                         brand={product.brand}

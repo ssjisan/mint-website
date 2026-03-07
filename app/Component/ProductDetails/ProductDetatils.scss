@@ -1,3 +1,6 @@
 .product-details-container {
   padding: 120px 0px;
+  @media (max-width: 991px) {
+    padding: 80px 16px;
+  }
 }

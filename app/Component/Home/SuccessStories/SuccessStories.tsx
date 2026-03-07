@@ -20,7 +20,7 @@ export default function SuccessStories() {
   const [error, setError] = useState("");
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
-  const [isTransitioning, setIsTransitioning] = useState(true); // Track if we should animate
+  const [isTransitioning, setIsTransitioning] = useState(true);
 
 
   /* ---------------- Screen Detection ---------------- */
@@ -93,7 +93,15 @@ export default function SuccessStories() {
       setCurrentIndex(stories.length);
     }
   };
+  useEffect(() => {
+    if (!stories.length) return;
 
+    const interval = setInterval(() => {
+      nextSlide();
+    }, 4000); // change speed here
+
+    return () => clearInterval(interval);
+  }, [stories]);
   if (loading) return <p>Loading stories...</p>;
   if (error) return <p>{error}</p>;
   if (!stories.length) return null;
