@@ -1,6 +1,6 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import type { Metadata } from "next";
-import { Manrope } from "next/font/google";
+import { DM_Sans } from "next/font/google";
 import "./globals.scss";
 import Script from "next/script";
 import { Toaster } from "react-hot-toast";
@@ -8,10 +8,10 @@ import ChatBot from "./Component/ChatBot";
 import Navbar from "./Component/Navbar/Navbar";
 import Footer from "./Component/Home/Footer/Footer";
 
-const manrope = Manrope({
+const dmSans = DM_Sans({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700", "800"],
-  variable: "--font-manrope",
+  weight: ["300", "400", "500", "600", "700"],
+  variable: "--font-dm-sans",
   display: "swap",
 });
 
@@ -48,7 +48,7 @@ export default function RootLayout({
         />
       </head>
 
-      <body className={`${manrope.variable}`}>
+      <body className={`${dmSans.variable}`}>
         <Toaster />
         <ChatBot />
         {children}
