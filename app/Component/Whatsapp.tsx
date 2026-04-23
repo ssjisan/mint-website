@@ -8,7 +8,7 @@ import { WhatsappIcon } from "./Assets/WhatsAppIcon";
 export default function WhatsAppWidget() {
   const [open, setOpen] = useState(false);
 
-  const phoneNumber = "8801944111190";
+  const phoneNumber = "8801944111150";
   const message = "Hello! I need some help.";
   const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(
     message,
@@ -23,7 +23,7 @@ export default function WhatsAppWidget() {
           <div className="d-flex align-items-center gap-2">
             <WhatsappIcon size={32} color="#fff" />
             <div>
-              <p className="title mb-0">Antaranga Dot Com Limited</p>
+              <p className="title mb-0">Mint</p>
               <span className="subtitle">WhatsApp</span>
             </div>
           </div>

@@ -141,7 +141,7 @@
 }
 .nav-pill.active {
   color: #2fbf9b;
-
+  font-weight: 900;
   &::after {
     transform: scaleX(1);
   }

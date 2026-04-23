@@ -35,6 +35,23 @@
   z-index: 1;
   pointer-events: none;
 
+  // 🔥 ADD THIS
+  -webkit-mask: radial-gradient(
+    50% 47% at 50% 46.6%,
+    rgba(0, 0, 0, 0) 6.10396%,
+    rgba(0, 0, 0, 0.1) 22.7266%,
+    rgba(0, 0, 0, 1) 64.5358%,
+    rgba(0, 0, 0, 0) 100%
+  );
+
+  mask: radial-gradient(
+    50% 47% at 50% 46.6%,
+    rgba(0, 0, 0, 0) 6.10396%,
+    rgba(0, 0, 0, 0.1) 22.7266%,
+    rgba(0, 0, 0, 1) 64.5358%,
+    rgba(0, 0, 0, 0) 100%
+  );
+
   img {
     object-fit: contain;
     object-position: center;

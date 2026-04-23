@@ -39,6 +39,24 @@ export default function Navbar() {
 
   const pathname = usePathname();
 
+  /* ================= SCROLL FIX ================= */
+
+  const scrollToSection = (id: string) => {
+    const el = document.getElementById(id);
+    if (!el) return;
+
+    const yOffset = -100; // adjust based on navbar height
+    const y = el.getBoundingClientRect().top + window.pageYOffset + yOffset;
+
+    window.scrollTo({
+      top: y,
+      behavior: "smooth",
+    });
+
+    // force URL update even if same hash
+    window.history.pushState(null, "", `/#${id}`);
+  };
+
   /* ================= SCROLL SECTION TRACKING ================= */
 
   useEffect(() => {
@@ -124,6 +142,10 @@ export default function Navbar() {
               key={id}
               className={`nav-pill ${activeSection === id ? "active" : ""}`}
               href={`/#${id}`}
+              onClick={(e) => {
+                e.preventDefault();
+                scrollToSection(id);
+              }}
             >
               {id === "stories"
                 ? "Success Stories"
@@ -158,7 +180,11 @@ export default function Navbar() {
             <Link
               key={id}
               href={`/#${id}`}
-              onClick={() => setMobileMenuOpen(false)}
+              onClick={(e) => {
+                e.preventDefault();
+                scrollToSection(id);
+                setMobileMenuOpen(false);
+              }}
               className={`nav-pill ${activeSection === id ? "active" : ""}`}
             >
               {id === "stories"
