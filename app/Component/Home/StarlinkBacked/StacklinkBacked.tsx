@@ -1,55 +1,92 @@
 "use client";
 
+import { useRef } from "react";
+import { motion, useInView, Variants } from "framer-motion";
 import Image from "next/image";
-import { motion } from "framer-motion";
-import MapRader from "../../Assets/MapRader";
 import "./StacklinkBacked.scss";
 
-/* ===== Animation Variants ===== */
+/* ================= VARIANTS ================= */
 
-const containerVariants = {
-  hidden: {},
+const mapVariants: Variants = {
+  hidden: {
+    opacity: 0,
+    y: 40,
+    scale: 0.96,
+  },
   visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
     transition: {
-      staggerChildren: 0.35,
+      duration: 0.9,
+      ease: [0.25, 0.1, 0.25, 1] as const,
     },
   },
 };
 
-const fadeUpVariants = {
-  hidden: { opacity: 0, y: 60 },
+const contentContainer: Variants = {
+  hidden: {},
   visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.9 }
+    transition: {
+      delayChildren: 0.25,
+      staggerChildren: 0.12,
+    },
   },
 };
 
+const contentItem: Variants = {
+  hidden: {
+    opacity: 0,
+    y: 24,
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.75,
+      ease: [0.25, 0.1, 0.25, 1] as const,
+    },
+  },
+};
+
+/* ================= COMPONENT ================= */
+
 export default function StacklinkBacked() {
+  const sectionRef = useRef<HTMLElement | null>(null);
+
+  const isInView = useInView(sectionRef, {
+    once: true,
+    margin: "-20% 0px",
+  });
+
   return (
-    <motion.section
-      className="container starlink-backed-container"
-      variants={containerVariants}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: false, margin: "-120px" }}
-    >
+    <section ref={sectionRef} className="container starlink-backed-container">
+      {/* CONTENT */}
       <motion.div
         className="starlink-backed-content"
-        variants={fadeUpVariants}
+        variants={contentContainer}
+        initial="hidden"
+        animate={isInView ? "visible" : "hidden"}
       >
-        <h4 className="heading-h3">
+        <motion.h4 variants={contentItem} className="heading-h3">
           Starlink-Backed Resilience
-        </h4>
+        </motion.h4>
 
-        <p className="body-one">
-          When terrestrial disruptions occur, Mint provides a true last line of defense.
-        </p>
+        <motion.p variants={contentItem} className="body-one">
+          When terrestrial disruptions occur, Mint provides a true last line of
+          defense.
+        </motion.p>
       </motion.div>
-      {/* MAP PART (Reveals First) */}
-      <motion.div className="map-svg-part" variants={fadeUpVariants}>
+
+      {/* MAP (ANIMATES FIRST) */}
+      <motion.div
+        className="map-svg-part"
+        variants={mapVariants}
+        initial="hidden"
+        animate={isInView ? "visible" : "hidden"}
+      >
         <Image
-          src="/map.svg"
+          src="/map.png"
           alt="World Map"
           fill
           className="map-img"
@@ -57,16 +94,9 @@ export default function StacklinkBacked() {
         />
 
         <div className="map-radar">
-          <Image
-            src="/radar.svg"
-            alt="Radar"
-            fill
-            className="radar-img"
-          />
+          <Image src="/radar.png" alt="Radar" fill className="radar-img" />
         </div>
       </motion.div>
-
-      {/* CONTENT (Reveals Second) */}
-    </motion.section>
+    </section>
   );
 }

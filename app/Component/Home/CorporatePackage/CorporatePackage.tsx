@@ -1,14 +1,10 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import ReactParallaxTilt from "react-parallax-tilt";
 import Image from "next/image";
 import toast from "react-hot-toast";
 
 import TickMarked from "../../Assets/TickMarked";
-import GlowingStarCorporateOne from "../../Assets/GlowingStarCorporateOne";
-import GlowingStarCorporateTwo from "../../Assets/GlowingStarCorporateTwo";
-import GlowingStarCorporateThree from "../../Assets/GlowingStarCorporateThree";
 
 import "./CorporatePackage.scss";
 import { Package } from "@/app/lib/types/package";
@@ -18,19 +14,18 @@ import CustomeSupportModal from "../../CustomeSupportModal/CustomeSupportModal";
 import EnterpriseIcon from "../../Assets/EnterpriseIcon";
 const corporateUI = [
   {
-    Glow: GlowingStarCorporateOne,
+    glowSrc: "/glowprice1.png",
     buttonClass: "primary-fill-button-corporate-one",
   },
   {
-    Glow: GlowingStarCorporateTwo,
+    glowSrc: "/glowprice2.png",
     buttonClass: "primary-fill-button-corporate-two",
   },
   {
-    Glow: GlowingStarCorporateThree,
+    glowSrc: "/glowprice3.png",
     buttonClass: "primary-fill-button-corporate-three",
   },
 ];
-
 export default function CorporatePackage() {
   const [packages, setPackages] = useState<Package[]>([]);
   const [open, setOpen] = useState(false);
@@ -57,7 +52,7 @@ export default function CorporatePackage() {
   };
 
   return (
-    <div className="corporate-package-container container"  >
+    <div className="corporate-package-container container">
       <div className="title-for-corporate-package">
         <div className="title-body">
           <div className="icon-body">
@@ -70,16 +65,21 @@ export default function CorporatePackage() {
       <div className="row g-4" style={{ justifyContent: "center" }}>
         {packages.map((pkg, index) => {
           const UI = corporateUI[index % corporateUI.length];
-          const Glow = UI.Glow;
 
           return (
             <div className="col-12 col-md-6 col-lg-4" key={pkg._id}>
               <div
-                className={`corporate-package-card ${index === 1 ? "famous-package" : ""
-                  }`}
+                className={`corporate-package-card ${
+                  index === 1 ? "famous-package" : ""
+                }`}
               >
                 <div className="glow-wrapper-two">
-                  <Glow />
+                  <Image
+                    src={UI.glowSrc}
+                    alt="Glow effect"
+                    fill
+                    className="glow-image"
+                  />
                 </div>
 
                 <div className="package-name-volume">
@@ -113,12 +113,20 @@ export default function CorporatePackage() {
           );
         })}
         <div className="custome-package-action">
-          <p className="body-one">Seeking a solution built specifically for your business?</p>
+          <p className="body-one">
+            Seeking a solution built specifically for your business?
+          </p>
           <div className="divider-button">
             <span className="line"></span>
-            <button className="button inherit-fill-button" onClick={() => setOpen(true)}>Talk to Sales</button>
+            <button
+              className="button inherit-fill-button"
+              onClick={() => setOpen(true)}
+            >
+              Talk to Sales
+            </button>
             <span className="line"></span>
-          </div>        </div>
+          </div>{" "}
+        </div>
       </div>
       {modalOpen && (
         <ConnectionModal

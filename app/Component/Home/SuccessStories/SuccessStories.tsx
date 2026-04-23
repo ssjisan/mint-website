@@ -22,7 +22,6 @@ export default function SuccessStories() {
   const [isMobile, setIsMobile] = useState(false);
   const [isTransitioning, setIsTransitioning] = useState(true);
 
-
   /* ---------------- Screen Detection ---------------- */
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth < 768);
@@ -107,10 +106,17 @@ export default function SuccessStories() {
   if (!stories.length) return null;
 
   return (
-    <div className="container success-stories-container"  >
+    <div className="container success-stories-container">
       <div className="success-stories-heading">
-        <h4 className="success-stories-container-heading">Starlink Success Stories</h4>
-        <Link className="secondary-outline-button button" href={`/success-stories`}>View All</Link>
+        <h4 className="success-stories-container-heading">
+          Starlink Success Stories
+        </h4>
+        <Link
+          className="secondary-outline-button button"
+          href={`/success-stories`}
+        >
+          View All
+        </Link>
       </div>
       <div className="slider-wrapper">
         <motion.div
@@ -148,8 +154,9 @@ export default function SuccessStories() {
             return (
               <div
                 key={index}
-                className={`card-item-bullet-point ${index === realIndex ? "active-card-item-bullet-point" : ""
-                  }`}
+                className={`card-item-bullet-point ${
+                  index === realIndex ? "active-card-item-bullet-point" : ""
+                }`}
                 onClick={() => {
                   setIsTransitioning(true);
                   setCurrentIndex(index + visibleCount);

@@ -7,6 +7,7 @@ import { Toaster } from "react-hot-toast";
 import ChatBot from "./Component/ChatBot";
 import Navbar from "./Component/Navbar/Navbar";
 import Footer from "./Component/Home/Footer/Footer";
+import WhatsAppWidget from "./Component/Whatsapp";
 
 const dmSans = DM_Sans({
   subsets: ["latin"],
@@ -50,6 +51,7 @@ export default function RootLayout({
 
       <body className={`${dmSans.variable}`}>
         <Toaster />
+        <WhatsAppWidget />
         <ChatBot />
         {children}
       </body>

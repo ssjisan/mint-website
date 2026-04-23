@@ -29,7 +29,6 @@
   overflow: hidden;
   position: relative;
   padding: 24px;
-  height: 380px;
 }
 .difference-card-glow {
   position: absolute;
@@ -38,16 +37,33 @@
 }
 .first-graphics {
   position: absolute;
-  overflow: hidden;
   top: -60px;
   right: -120px;
+  width: 400px;
+  height: 400px;
+  pointer-events: none;
+
+  img {
+    object-fit: contain;
+    width: 100%;
+    height: 100%;
+  }
 }
+
 .second-graphics {
   position: absolute;
-  overflow: hidden;
   bottom: -200px;
   left: 50%;
   transform: translateX(-50%);
+  width: 500px;
+  height: 500px;
+  pointer-events: none;
+
+  img {
+    object-fit: contain;
+    width: 100%;
+    height: 100%;
+  }
 }
 .difference-content {
   max-width: 75%;
@@ -66,12 +82,21 @@
   }
 }
 .card-image-layer {
+  border: 1px solid red;
+  height: 80px;
+  width: 80px;
   z-index: 1;
-  position: absolute;
+  // position: absolute;
   bottom: 0;
   right: 0;
-  mix-blend-mode: multiply;
+  border: 1px solid #042b22;
+  border-radius: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  // mix-blend-mode: multiply;
   img {
     object-fit: contain;
   }
+  margin-bottom: 32px;
 }

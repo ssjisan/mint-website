@@ -42,7 +42,7 @@
 }
 .focus-package-card-container {
   position: absolute;
-  top: 248px;
+  top: 232px;
   left: 50%;
   transform: translateX(-50%);
   @media (max-width: 1199px) {
@@ -129,4 +129,18 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+.pick-your-pace {
+  font-weight: 700;
+  font-size: clamp(40px, 10vw, 160px);
+  line-height: 1;
+  white-space: nowrap;
+  background: linear-gradient(180deg, #767676 0%, #010101 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: #ffffff00;
+  -webkit-text-fill-color: initial;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: center;
 }

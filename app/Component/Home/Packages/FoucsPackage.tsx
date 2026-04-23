@@ -43,7 +43,7 @@ export default function FoucsPackage() {
   if (!pkg) return null;
 
   return (
-    <div className="foucs-package-container container" >
+    <div className="foucs-package-container container">
       {/* ---------------- Header ---------------- */}
       <div className="title-for-focus-package">
         <div className="title-body">
@@ -52,7 +52,7 @@ export default function FoucsPackage() {
           </div>
           <p className="heading-h6">Residential</p>
         </div>
-        <PricingPlan />
+        <p className="pick-your-pace">Pick Your Pace</p>
       </div>
 
       {/* ---------------- Card ---------------- */}

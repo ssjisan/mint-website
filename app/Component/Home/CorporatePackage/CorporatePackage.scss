@@ -81,9 +81,9 @@
 
 .corporate-package-card:hover {
   transform: translateY(-8px) scale(1.015);
-  box-shadow:
-    0 30px 70px rgba(0, 0, 0, 0.6),
-    0 0 50px rgba(255, 255, 255, 0.15);
+  // box-shadow:
+  //   0 30px 70px rgba(0, 0, 0, 0.6),
+  //   0 0 50px rgba(255, 255, 255, 0.15);
 }
 
 .corporate-package-card:hover::before {
@@ -132,11 +132,16 @@
 
 .glow-wrapper-two {
   position: absolute;
-  top: -248px;
+  top: -180px;
   left: 50%;
   transform: translateX(-50%);
   z-index: -1;
   pointer-events: none;
+  width: 100%;
+  height: 320px;
+  img {
+    width: 100%;
+  }
 }
 
 /* ================= CONTENT ================= */

@@ -1,94 +1,96 @@
 "use client";
 
-import { motion, useMotionValue, useMotionTemplate } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
+import { motion, useAnimation, useInView, Variants } from "framer-motion";
 import axios from "../../../lib/axios";
+import toast from "react-hot-toast";
 
 import AbstractGrid from "../../Assets/AbstractGrid";
 import Email from "../../Assets/Email";
 import LightRayTypeSix from "../../Assets/LightRayTypeSix";
 import Phone from "../../Assets/Phone";
 import "./FinalCta.scss";
-import toast from "react-hot-toast";
-import { useState } from "react";
-import { Package } from "@/app/lib/types/package"; // same Package type
+
+import { Package } from "@/app/lib/types/package";
 import ConnectionModal from "../ConnectionModal/ConnectionModal";
+
+/* ================= CTA CARD ================= */
+
+function CtaCard({ children }: { children: React.ReactNode }) {
+  return (
+    <div className="final-cta-body">
+      <div className="cta-glow" />
+      {children}
+    </div>
+  );
+}
 
 /* ================= ANIMATION VARIANTS ================= */
 
-const containerVariants = {
+const containerVariants: Variants = {
   hidden: {},
   visible: {
     transition: {
-      staggerChildren: 0.18,
+      staggerChildren: 0.12,
     },
   },
 };
 
-const contentVariants = {
-  hidden: { opacity: 0, y: 32 },
+const itemVariants: Variants = {
+  hidden: {
+    opacity: 0,
+    y: 32,
+  },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.9 },
+    transition: {
+      duration: 0.8,
+      ease: [0.25, 0.1, 0.25, 1] as const, // ✅ FIXED
+    },
   },
 };
 
-/* ================= CTA CARD WITH HOVER GLOW ================= */
+const extraContainerVariants: Variants = {
+  hidden: {},
+  visible: {
+    transition: {
+      delayChildren: 0.3,
+      staggerChildren: 0.14,
+    },
+  },
+};
 
-function CtaCard({ children }: { children: React.ReactNode }) {
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
-
-  function handleMouseMove(e: React.MouseEvent<HTMLDivElement>) {
-    const rect = e.currentTarget.getBoundingClientRect();
-    mouseX.set(e.clientX - rect.left);
-    mouseY.set(e.clientY - rect.top);
-  }
-
-  return (
-    <motion.div
-      className="final-cta-body"
-      variants={contentVariants}
-      onMouseMove={handleMouseMove}
-    >
-      {/* Hover Glow */}
-      <motion.div
-        className="cta-glow"
-        style={{
-          background: useMotionTemplate`
-            radial-gradient(
-              280px circle at ${mouseX}px ${mouseY}px,
-              rgba(255,255,255,0.14),
-              transparent 65%
-            )
-          `,
-        }}
-      />
-
-      {children}
-    </motion.div>
-  );
-}
-
-/* ================= MAIN COMPONENT ================= */
+/* ================= MAIN ================= */
 
 export default function FinalCta() {
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedPackage, setSelectedPackage] = useState<Package | null>(null);
   const [packages, setPackages] = useState<Package[]>([]);
 
-  // Fetch all packages once (optional)
+  const sectionRef = useRef<HTMLElement | null>(null);
+  const isInView = useInView(sectionRef, { once: true });
+  const controls = useAnimation();
+
+  useEffect(() => {
+    if (isInView) {
+      controls.start("visible");
+    }
+  }, [isInView, controls]);
+
   const fetchPackages = async () => {
     try {
       const res = await axios.get("/packages");
       setPackages(res.data.packages);
-      // Optionally select the first package by default
-      if (res.data.packages.length > 0)
+
+      if (res.data.packages.length > 0) {
         setSelectedPackage(res.data.packages[0]);
-    } catch (err) {
+      }
+    } catch {
       toast.error("Failed to load packages");
     }
   };
+
   const openModal = () => {
     if (!packages.length) {
       fetchPackages().then(() => setModalOpen(true));
@@ -98,75 +100,107 @@ export default function FinalCta() {
   };
 
   return (
-    <motion.section
-      className="final-ctg-container container"
-      variants={containerVariants}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: false, margin: "-120px" }}
-    >
+    <section ref={sectionRef} className="final-ctg-container container">
       <CtaCard>
-        {/* Gradient */}
         <div className="cta-gradient">
           <LightRayTypeSix />
         </div>
 
-        {/* Grid */}
         <div className="cta-grid">
           <AbstractGrid />
         </div>
 
-        {/* Content */}
-        <div className="final-cta-content">
-          <h2 className="heading-h3">
+        {/* MAIN CONTENT */}
+        <motion.div
+          className="final-cta-content"
+          variants={containerVariants}
+          initial="hidden"
+          animate={controls}
+        >
+          <motion.h2 variants={itemVariants} className="heading-h3">
             More than just speed. Mint is a lifestyle.
-          </h2>
-          <p className="subtitle">
-            Ready for internet as exceptional as your address?
-          </p>
-        </div>
+          </motion.h2>
 
-        <button className="button primary-fill-button" onClick={openModal}>
+          <motion.p variants={itemVariants} className="subtitle">
+            Ready for internet as exceptional as your address?
+          </motion.p>
+        </motion.div>
+
+        {/* BUTTON */}
+        <motion.button
+          className="button primary-fill-button"
+          onClick={openModal}
+          variants={itemVariants}
+          initial="hidden"
+          animate={controls}
+        >
           Get Mint
-        </button>
-        <div className="referal-link-section">
-          <div className="referral-divider">
+        </motion.button>
+
+        {/* REFERRAL */}
+        <motion.div
+          className="referal-link-section"
+          variants={extraContainerVariants}
+          initial="hidden"
+          animate={controls}
+        >
+          <motion.div variants={itemVariants} className="referral-divider">
             <span className="divider-line" />
             <p>or</p>
             <span className="divider-line" />
-          </div>
-          <p className="subtitle">
-            Want to refer Mint to someone?</p>
-          <button onClick={() => {
-            const referralLink = `https://www.mint.com.bd/referral`;
-            navigator.clipboard.writeText(referralLink);
-            toast.success("Referral link copied!");
-          }}
-            className="button primary-outline-button">Copy Referral link</button>
-        </div>
-        {/* Contact */}
-        <div className="final-cta-contact-deck">
-          <div className="final-cta-contact-email">
+          </motion.div>
+
+          <motion.p variants={itemVariants} className="subtitle">
+            Want to refer Mint to someone?
+          </motion.p>
+
+          <motion.button
+            variants={itemVariants}
+            onClick={() => {
+              navigator.clipboard.writeText("https://www.mint.com.bd/referral");
+              toast.success("Referral link copied!");
+            }}
+            className="button primary-outline-button"
+          >
+            Copy Referral link
+          </motion.button>
+        </motion.div>
+
+        {/* CONTACT */}
+        <motion.div
+          className="final-cta-contact-deck"
+          variants={extraContainerVariants}
+          initial="hidden"
+          animate={controls}
+        >
+          <motion.div
+            variants={itemVariants}
+            className="final-cta-contact-email"
+          >
             <div className="final-cta-icon-body">
               <Email />
             </div>
             <p className="subtitle">info@mint.com.bd</p>
-          </div>
+          </motion.div>
 
-          <div className="final-cta-contact-email">
+          <motion.div
+            variants={itemVariants}
+            className="final-cta-contact-email"
+          >
             <div className="final-cta-icon-body">
               <Phone />
             </div>
             <p className="subtitle">09666773696</p>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </CtaCard>
+
       {modalOpen && selectedPackage && (
         <ConnectionModal
           selectedPackage={selectedPackage}
           onClose={() => setModalOpen(false)}
         />
       )}
-    </motion.section>
+    </section>
   );
 }

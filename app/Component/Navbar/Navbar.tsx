@@ -2,14 +2,33 @@
 
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import Logo from "../Assets/Logo";
 import { Package } from "@/app/lib/types/package";
 import axios from "../../lib/axios";
 import toast from "react-hot-toast";
 import "./Navbar.scss";
 import ConnectionModal from "../Home/ConnectionModal/ConnectionModal";
 import Link from "next/link";
-import { usePathname } from "next/navigation"; // Next.js hook
+import { usePathname } from "next/navigation";
+import Image from "next/image";
+
+/* ================= ANIMATION ================= */
+
+const navbarVariant = {
+  hidden: {
+    opacity: 0,
+    y: -32,
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.9,
+      ease: [0.22, 1, 0.36, 1] as const,
+    },
+  },
+};
+
+/* ================= COMPONENT ================= */
 
 export default function Navbar() {
   const [modalOpen, setModalOpen] = useState(false);
@@ -17,17 +36,14 @@ export default function Navbar() {
   const [packages, setPackages] = useState<Package[]>([]);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState<string>("");
+
   const pathname = usePathname();
-  const handleLogoClick = (e: React.MouseEvent) => {
-    if (pathname === "/") {
-      e.preventDefault(); // prevent navigation
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    }
-  };
+
+  /* ================= SCROLL SECTION TRACKING ================= */
+
   useEffect(() => {
     const handleScroll = () => {
       const sections = ["residential", "enterprise", "security", "stories"];
-
       const scrollPosition = window.scrollY + 120;
 
       let foundSection = "";
@@ -48,7 +64,6 @@ export default function Navbar() {
         }
       }
 
-      // 🔥 If no section found → clear active state
       setActiveSection(foundSection);
     };
 
@@ -58,14 +73,17 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  /* ================= PACKAGE LOGIC ================= */
 
   const fetchPackages = async () => {
     try {
       const res = await axios.get("/packages");
       setPackages(res.data.packages);
-      if (res.data.packages.length > 0)
+
+      if (res.data.packages.length > 0) {
         setSelectedPackage(res.data.packages[0]);
-    } catch (err) {
+      }
+    } catch {
       toast.error("Failed to load packages");
     }
   };
@@ -78,36 +96,43 @@ export default function Navbar() {
     }
   };
 
+  const handleLogoClick = (e: React.MouseEvent) => {
+    if (pathname === "/") {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  };
+
   return (
     <>
+      {/* ================= NAVBAR ================= */}
       <motion.div
         className="navbar-container"
-        initial={{ y: -80, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
+        variants={navbarVariant}
+        initial="hidden"
+        animate="visible"
       >
+        {/* LOGO */}
         <Link href="/" className="logo" onClick={handleLogoClick}>
-          <Logo width={64} height={64} />
+          <Image src="/Logo.svg" alt="Logo" width={64} height={64} priority />
         </Link>
 
-        {/* Desktop Menu */}
+        {/* DESKTOP MENU */}
         <div className="nav-menu">
-          <a className={`nav-pill ${activeSection === "residential" ? "active" : ""}`}
-            href="/#residential">
-            Residential
-          </a>
-          <a className={`nav-pill ${activeSection === "enterprise" ? "active" : ""}`} href="/#enterprise">
-            Enterprise
-          </a>
-          <a className={`nav-pill ${activeSection === "security" ? "active" : ""}`} href="/#security">
-            Security
-          </a>
-          <a className={`nav-pill ${activeSection === "stories" ? "active" : ""}`} href="/#stories">
-            Success Stories
-          </a>
+          {["residential", "enterprise", "security", "stories"].map((id) => (
+            <Link
+              key={id}
+              className={`nav-pill ${activeSection === id ? "active" : ""}`}
+              href={`/#${id}`}
+            >
+              {id === "stories"
+                ? "Success Stories"
+                : id.charAt(0).toUpperCase() + id.slice(1)}
+            </Link>
+          ))}
         </div>
 
-        {/* Desktop Button */}
+        {/* CTA */}
         <button
           className="button primary-fill-button desktop-mint"
           onClick={openModal}
@@ -115,7 +140,7 @@ export default function Navbar() {
           Get Mint
         </button>
 
-        {/* Mobile Hamburger */}
+        {/* HAMBURGER */}
         <button
           className={`hamburger ${mobileMenuOpen ? "active" : ""}`}
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -126,21 +151,21 @@ export default function Navbar() {
         </button>
       </motion.div>
 
-      {/* Mobile Dropdown Menu */}
+      {/* ================= MOBILE MENU ================= */}
       {mobileMenuOpen && (
         <div className="mobile-menu">
-          <Link href="/#residential" onClick={() => setMobileMenuOpen(false)} className={`nav-pill ${activeSection === "residential" ? "active" : ""}`}>
-            Residential
-          </Link>
-          <Link href="/#enterprise" onClick={() => setMobileMenuOpen(false)} className={`nav-pill ${activeSection === "enterprise" ? "active" : ""}`}>
-            Enterprise
-          </Link>
-          <Link href="/#security" onClick={() => setMobileMenuOpen(false)} className={`nav-pill ${activeSection === "security" ? "active" : ""}`}>
-            Security
-          </Link>
-          <Link href="/#stories" onClick={() => setMobileMenuOpen(false)} className={`nav-pill ${activeSection === "stories" ? "active" : ""}`}>
-            Success Stories
-          </Link>
+          {["residential", "enterprise", "security", "stories"].map((id) => (
+            <Link
+              key={id}
+              href={`/#${id}`}
+              onClick={() => setMobileMenuOpen(false)}
+              className={`nav-pill ${activeSection === id ? "active" : ""}`}
+            >
+              {id === "stories"
+                ? "Success Stories"
+                : id.charAt(0).toUpperCase() + id.slice(1)}
+            </Link>
+          ))}
 
           <button
             className="button primary-fill-button"
@@ -154,6 +179,7 @@ export default function Navbar() {
         </div>
       )}
 
+      {/* ================= MODAL ================= */}
       {modalOpen && selectedPackage && (
         <ConnectionModal
           selectedPackage={selectedPackage}
