@@ -1,127 +1,196 @@
+/* ================= BACKDROP ================= */
+
 .connection-drawer-backdrop {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.6);
+  inset: 0;
+
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(10px);
+
   z-index: 101;
+
   display: flex;
-  justify-content: flex-end; // Drawer slides from right
-  overflow-y: auto;
+  justify-content: flex-end;
 }
+
+/* ================= DRAWER ================= */
 
 .connection-drawer {
   width: 100%;
-  max-width: 500px;
+  max-width: 480px;
   height: 100%;
-  background-color: #19191a;
-  padding: 2rem;
+
+  background: #0f0f14;
+  border-left: 1px solid rgba(255, 255, 255, 0.08);
+
+  padding: 28px 24px;
+
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 16px;
+
   position: relative;
+
+  box-shadow: -10px 0 40px rgba(0, 0, 0, 0.6);
+
+  animation: slideIn 0.25s ease;
 }
 
-h3 {
-  font-size: 1.5rem;
+/* ================= TITLE ================= */
+
+.connection-drawer h3 {
+  font-size: 18px;
   font-weight: 600;
-  margin-bottom: 1rem;
-  color: white;
+  color: #ffffff;
 }
+
+/* ================= GRID ================= */
 
 .form-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 1rem;
+  gap: 14px;
 
   @media (max-width: 600px) {
     grid-template-columns: 1fr;
   }
 }
 
+/* ================= FORM GROUP ================= */
+
 .form-group {
   display: flex;
   flex-direction: column;
 
   label {
-    font-weight: 500;
-    margin-bottom: 0.25rem;
-    color: white;
+    font-size: 13px;
+    color: #aaa;
+    margin-bottom: 6px;
   }
 
   input,
   select {
-    padding: 0.6rem 0.8rem;
-    border: 1px solid #616161;
-    background-color: #19191a;
-    border-radius: 8px;
-    font-size: 1rem;
-    color: white;
-    &:focus {
-      outline: none;
-      border-color: #2fbf9b;
-      box-shadow: 0 0 0 2px rgba(47, 191, 155, 0.2);
-    }
+    width: 100%;
+    padding: 12px 14px;
+
+    background: #161621;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 10px;
+
+    color: #fff;
+    font-size: 14px;
+
+    outline: none;
+    transition: 0.2s ease;
+  }
+
+  input:focus,
+  select:focus {
+    border-color: #4f46e5;
+    box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.2);
   }
 }
+
+/* ================= CONNECTION TYPE ================= */
+
+.connection-type-deck {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 6px;
+}
+
+.connection-type {
+  flex: 1;
+  padding: 10px 14px;
+
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+
+  background: transparent;
+  color: #aaa;
+
+  cursor: pointer;
+  font-size: 14px;
+
+  transition: all 0.2s ease;
+}
+
+.connection-type:hover {
+  border-color: #4f46e5;
+  color: #fff;
+}
+
+/* active */
+.active-connection-type {
+  background: rgba(79, 70, 229, 0.15);
+  color: #4f46e5;
+  border-color: #4f46e5;
+  font-weight: 600;
+}
+
+/* ================= BUTTON ================= */
 
 .submit-btn {
   width: 100%;
-  background-color: #2fbf9b;
-  color: white;
-  padding: 0.8rem 1rem;
-  font-size: 1rem;
-  font-weight: 600;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
   margin-top: auto;
 
-  &:hover {
-    background-color: #149272;
-  }
+  padding: 12px;
+
+  border-radius: 10px;
+  border: none;
+
+  background: #2fbf9b;
+  color: #fff;
+
+  font-size: 14px;
+  font-weight: 500;
+
+  cursor: pointer;
+  transition: 0.2s ease;
 }
+
+.submit-btn:hover {
+  background: #19a784;
+}
+
+/* ================= CLOSE BUTTON ================= */
 
 .close-btn {
   position: absolute;
   top: 16px;
-  right: 24px;
+  right: 20px;
+
+  width: 36px;
+  height: 36px;
+
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+
   background: transparent;
-  cursor: pointer;
-  color: #fff;
-  border: 1px solid rgb(255, 255, 255);
-  border-radius: 100%;
-  padding: 12px;
-  width: 40px;
-  height: 40px;
+  color: #aaa;
+
   display: flex;
-  justify-content: center;
   align-items: center;
-}
-.connection-type-deck {
-  display: flex;
-  gap: 12px;
-  margin-bottom: 12px;
-}
+  justify-content: center;
 
-.connection-type {
-  padding: 10px 18px;
-  border-radius: 10px;
-  border: 1px solid var(--secondary-500);
-  background: transparent;
   cursor: pointer;
-  font-size: 14px;
-  transition: all 0.2s ease;
-
-  &:hover {
-    background: var(--secondary-50);
-  }
+  transition: 0.2s;
 }
 
-.active-connection-type {
-  background-color: #7c3aed26;
-  color: var(--secondary-500);
-  border-color: var(--secondary-500);
-  font-weight: 700;
+.close-btn:hover {
+  border-color: #fff;
+  color: #fff;
+}
+
+/* ================= ANIMATION ================= */
+
+@keyframes slideIn {
+  from {
+    transform: translateX(40px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
 }
