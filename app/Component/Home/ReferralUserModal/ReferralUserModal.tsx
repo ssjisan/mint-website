@@ -23,7 +23,7 @@ export default function ReferralUserModal({ onClose, onSuccess }: Props) {
     };
   }, []);
   const STORAGE_KEY = "mint_referral_user";
-  const BASE = "http://localhost:3000/referral";
+  const BASE = "https://mint.com.bd/referral";
 
   const handleSubmit = async () => {
     if (!name || !phone) {
