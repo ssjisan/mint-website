@@ -13,6 +13,7 @@ import "./FinalCta.scss";
 
 import { Package } from "@/app/lib/types/package";
 import ConnectionModal from "../ConnectionModal/ConnectionModal";
+import ReferralUserModal from "../ReferralUserModal/ReferralUserModal";
 
 /* ================= CTA CARD ================= */
 
@@ -65,9 +66,9 @@ const extraContainerVariants: Variants = {
 
 export default function FinalCta() {
   const [modalOpen, setModalOpen] = useState(false);
+  const [refModalOpen, setRefModalOpen] = useState(false);
   const [selectedPackage, setSelectedPackage] = useState<Package | null>(null);
   const [packages, setPackages] = useState<Package[]>([]);
-
   const sectionRef = useRef<HTMLElement | null>(null);
   const isInView = useInView(sectionRef, { once: true });
   const controls = useAnimation();
@@ -97,6 +98,22 @@ export default function FinalCta() {
     } else {
       setModalOpen(true);
     }
+  };
+
+  const handleReferralClick = async () => {
+    const stored = localStorage.getItem("mint_referral_user");
+
+    if (stored) {
+      const user = JSON.parse(stored);
+
+      const link = `https://www.mint.com.bd/referral?ref=${user.referralId}`;
+
+      await navigator.clipboard.writeText(link);
+      toast.success("Referral link copied!");
+      return;
+    }
+
+    setRefModalOpen(true);
   };
 
   return (
@@ -156,10 +173,11 @@ export default function FinalCta() {
 
           <motion.button
             variants={itemVariants}
-            onClick={() => {
-              navigator.clipboard.writeText("https://www.mint.com.bd/referral");
-              toast.success("Referral link copied!");
-            }}
+            // onClick={() => {
+            //   navigator.clipboard.writeText("https://www.mint.com.bd/referral");
+            //   toast.success("Referral link copied!");
+            // }}
+            onClick={handleReferralClick}
             className="button primary-outline-button"
           >
             Copy Referral link
@@ -199,6 +217,12 @@ export default function FinalCta() {
         <ConnectionModal
           selectedPackage={selectedPackage}
           onClose={() => setModalOpen(false)}
+        />
+      )}
+      {refModalOpen && (
+        <ReferralUserModal
+          onClose={() => setRefModalOpen(false)}
+          onSuccess={() => {}}
         />
       )}
     </section>

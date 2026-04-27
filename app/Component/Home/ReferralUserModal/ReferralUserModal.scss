@@ -1,0 +1,127 @@
+/* ================= BACKDROP ================= */
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(8px);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  z-index: 9999;
+}
+
+/* ================= MODAL BOX ================= */
+
+.modal-box {
+  width: 92%;
+  max-width: 420px;
+
+  background: #0f0f14;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+
+  padding: 24px;
+
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+
+  animation: pop 0.25s ease;
+}
+
+/* ================= TITLE ================= */
+
+.modal-box h2 {
+  color: #ffffff;
+  font-size: 18px;
+  margin-bottom: 18px;
+  font-weight: 600;
+  padding-bottom: 40px;
+}
+
+/* ================= INPUTS ================= */
+
+.modal-box input {
+  width: 100%;
+  padding: 12px 14px;
+  margin-bottom: 12px;
+
+  background: #161621;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+
+  color: #ffffff;
+  font-size: 14px;
+
+  outline: none;
+  transition: 0.2s ease;
+}
+
+.modal-box input:focus {
+  border-color: #4f46e5;
+  box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.2);
+}
+
+/* ================= ACTIONS ================= */
+
+.modal-actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+/* ================= BUTTONS ================= */
+
+.modal-actions button {
+  flex: 1;
+  padding: 10px 12px;
+
+  border-radius: 10px;
+  font-size: 14px;
+
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+/* cancel */
+.modal-actions button:first-child {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #aaa;
+}
+
+.modal-actions button:first-child:hover {
+  border-color: #666;
+  color: #fff;
+}
+
+/* primary */
+.modal-actions button:last-child {
+  background: #2fbf9b;
+  border: none;
+  color: #fff;
+}
+
+.modal-actions button:last-child:hover {
+  background: #19a784;
+}
+
+.modal-actions button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* ================= ANIMATION ================= */
+
+@keyframes pop {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
